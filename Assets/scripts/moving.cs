@@ -23,7 +23,7 @@ public class moving : MonoBehaviour
         if(ismoving)
         {
             Move();
-        }
+        }   
     }
     private void SetTargetPosition()
     {
