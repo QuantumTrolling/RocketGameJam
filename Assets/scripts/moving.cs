@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEngine;
 
 public class moving : MonoBehaviour
@@ -30,7 +31,18 @@ public class moving : MonoBehaviour
         targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         targetPosition.z = transform.position.z;
 
+        
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        
+        if(hit.collider != null)
+        {
+            Debug.Log(hit.collider.gameObject.name);
+        }
+
         ismoving = true;
+        
+    
+
     }
 
     private void Move(){
