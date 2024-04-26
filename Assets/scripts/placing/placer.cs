@@ -37,7 +37,7 @@ public class Placer : MonoBehaviour
             placablePreview = null;
             return;
         }
-        else if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        else if (Input.GetKeyDown(KeyCode.E))
         {
             InstantiatePlacable();
         }

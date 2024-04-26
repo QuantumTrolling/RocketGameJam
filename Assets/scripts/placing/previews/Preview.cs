@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class Preview : MonoBehaviour
 {
-    [SerializeField] private Placable Placable;
+    [SerializeField] public Placable Placable;
 
     public Vector2Int Size;
     private Vector2Int currentGridPose;
