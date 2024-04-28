@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering;
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 
 public class settings : MonoBehaviour
 {
@@ -40,5 +41,26 @@ public class settings : MonoBehaviour
     public void SetResolution(int resolutionIndex){
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+
+    public void ApplySettings(){
+        PlayerPrefs.SetInt("ResoluitionPreference", resolutionDropdown.value);
+        PlayerPrefs.SetInt("FullscreenPreference", System.Convert.ToInt32(Screen.fullScreen));
+
+    }
+
+    public void LoadSettings(int currentResolutinIndex){
+        if (PlayerPrefs.HasKey("ResoluitionPreference")){
+            resolutionDropdown.value = PlayerPrefs.GetInt("ResoluitionPreference");
+        }
+        else{
+            resolutionDropdown.value = currentResolutinIndex;
+        }
+        if (PlayerPrefs.HasKey("FullscreenPreference")){
+            Screen.fullScreen = System.Convert.ToBoolean(PlayerPrefs.GetInt("FullscreenPreference"));
+        }
+        else{
+            Screen.fullScreen = true;
+        }
     }
 }
