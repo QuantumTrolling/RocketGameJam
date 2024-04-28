@@ -1,10 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Placer : MonoBehaviour
 {
     public List<Placable> placedThings;
+
+    public GameObject player;
+    private static double d;
 
     private TileMapHolder grid;
     private Preview placablePreview;
@@ -26,6 +30,9 @@ public class Placer : MonoBehaviour
 
     private void Update()
     {
+        var position_player = player.transform.position;
+        var enemy_v = this.transform.position;
+        float d = (float)Math.Sqrt(Math.Pow(position_player.y - enemy_v.y, 2) + Math.Pow(position_player.x - enemy_v.x, 2));
         if (placablePreview == null)
         {
             return;
@@ -37,7 +44,7 @@ public class Placer : MonoBehaviour
             placablePreview = null;
             return;
         }
-        else if (Input.GetKeyDown(KeyCode.E))
+        else if (Input.GetKeyDown(KeyCode.E) && d <= 5)
         {
             InstantiatePlacable();
         }
