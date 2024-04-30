@@ -8,10 +8,11 @@ public class Placer : MonoBehaviour
     public List<Placable> placedThings;
 
     public GameObject player;
-    private static double d;
 
     private TileMapHolder grid;
     private Preview placablePreview;
+
+    public double d;
 
     private void Awake()
     {
@@ -30,9 +31,6 @@ public class Placer : MonoBehaviour
 
     private void Update()
     {
-        var position_player = player.transform.position;
-        var enemy_v = this.transform.position;
-        float d = (float)Math.Sqrt(Math.Pow(position_player.y - enemy_v.y, 2) + Math.Pow(position_player.x - enemy_v.x, 2));
         if (placablePreview == null)
         {
             return;
@@ -53,11 +51,12 @@ public class Placer : MonoBehaviour
         {
             Vector3 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2Int gridPos = GetGrid().GetGridPosHere(mouse);
-
+            var position_player = player.transform.position;
             Vector2 cellCenter;
             if (GetGrid().IsAreaBounded(gridPos.x, gridPos.y, Vector2Int.one))
             {
                 cellCenter = GetGrid().GetGridCellPosition(gridPos);
+                d = Math.Sqrt(Math.Pow(position_player.y - gridPos.y, 2) + Math.Pow(position_player.x - gridPos.x, 2));
             }
             else
             {

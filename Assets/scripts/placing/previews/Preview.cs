@@ -18,6 +18,8 @@ public class Preview : MonoBehaviour
     private Color green;
     private Color red;
 
+
+
     private void Awake()
     {
         MainRenderer = GetComponentInChildren<SpriteRenderer>();

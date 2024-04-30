@@ -102,6 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Placable: {fileID: 6583687845480525088, guid: 93d2db2702ab438439822c3d3d18a216, type: 3}
   Size: {x: 1, y: 1}
+  d: 0
+  player: {fileID: 3086506610411950498, guid: 3592bbeca81e95243a565d1a5d17eec0, type: 3}
 --- !u!61 &7253086057928926838
 BoxCollider2D:
   m_ObjectHideFlags: 0
