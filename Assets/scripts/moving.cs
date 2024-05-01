@@ -9,6 +9,7 @@ public class moving : MonoBehaviour
     private Vector3 targetPosition;
     public float speed = 5f;
 
+    public TileMapHolder grid;
     
     void Start()
     {
