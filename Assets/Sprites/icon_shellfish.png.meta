@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      icon_shellfish_0: -5339744147308460966
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
