@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e9fa6283b3c6c2844aca21302c8bc633
+guid: 993b2a565ee8ac14cb43756ce08162aa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8676198686940741928
-    second: test_planks_0
+      213: -5339744147308460966
+    second: icon_shellfish_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: test_planks_0
+      name: icon_shellfish_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 1
-        width: 13
-        height: 13
+        x: 0
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8debf204343f79780800000000000000
-      internalID: -8676198686940741928
+      spriteID: a54453c3dfa65e5b0800000000000000
+      internalID: -5339744147308460966
       vertices: []
       indices: 
       edges: []
@@ -131,7 +131,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      test_planks_0: -8676198686940741928
+      icon_shellfish_0: -5339744147308460966
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

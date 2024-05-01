@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: eb6ed274d9014144ab56f3d92053ca9d
+guid: 74f1958b48fb72145a0606456d3d5640
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7485755960868294375
-    second: test_pearl_0
+      213: -2054576684380183168
+    second: icon_board_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: test_pearl_0
+      name: icon_board_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 2
-        width: 14
-        height: 11
+        x: 0
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 911be256d904d1890800000000000000
-      internalID: -7485755960868294375
+      spriteID: 08528b3246dac73e0800000000000000
+      internalID: -2054576684380183168
       vertices: []
       indices: 
       edges: []
@@ -131,7 +131,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      test_pearl_0: -7485755960868294375
+      icon_board_0: -2054576684380183168
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
