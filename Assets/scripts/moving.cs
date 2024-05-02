@@ -6,6 +6,7 @@ using UnityEngine;
 public class moving : MonoBehaviour
 {
     private bool ismoving = false;
+    private bool CanMove = true;
     private Vector3 targetPosition;
     public float speed = 5f;
 
@@ -16,7 +17,11 @@ public class moving : MonoBehaviour
         
     }
 
-    
+    public void StopMoving(){
+        bool check = CanMove;
+        CanMove = !check;
+    }
+
     void Update()
     {
         if(Input.GetMouseButton(0)){
@@ -29,6 +34,7 @@ public class moving : MonoBehaviour
     }
     private void SetTargetPosition()
     {
+        if (CanMove){
         targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         targetPosition.z = transform.position.z;
 
@@ -42,7 +48,7 @@ public class moving : MonoBehaviour
 
         ismoving = true;
         
-    
+        }
 
     }
 

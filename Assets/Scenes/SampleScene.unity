@@ -445,6 +445,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1008267656}
+        m_TargetAssemblyTypeName: moving, Assembly-CSharp
+        m_MethodName: StopMoving
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &169090378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1116,6 +1128,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1008267656}
+        m_TargetAssemblyTypeName: moving, Assembly-CSharp
+        m_MethodName: StopMoving
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &517057810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1660,6 +1684,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3086506610411950498, guid: 3592bbeca81e95243a565d1a5d17eec0, type: 3}
   m_PrefabInstance: {fileID: 1842087702}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1008267656 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8302289246290255292, guid: 3592bbeca81e95243a565d1a5d17eec0, type: 3}
+  m_PrefabInstance: {fileID: 1842087702}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008267653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f39af2bbb80be64d9937ea99c4be1f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1122785799
 GameObject:
   m_ObjectHideFlags: 0
