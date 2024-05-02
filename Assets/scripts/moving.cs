@@ -35,9 +35,9 @@ public class moving : MonoBehaviour
         
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
         
-        if(hit.collider != null)
+        if(grid.IsAreaBounded(((int)targetPosition.x), ((int)targetPosition.y), new Vector2Int(8,8)) && grid.IsPlaceTaken(((int)targetPosition.x), ((int)targetPosition.y), new Vector2Int(8,8)))
         {
-            Debug.Log(hit.collider.gameObject.name);
+            Debug.Log("Yep");
         }
 
         ismoving = true;

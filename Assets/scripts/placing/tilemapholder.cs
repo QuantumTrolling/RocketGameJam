@@ -72,7 +72,7 @@ public class TileMapHolder : MonoBehaviour
         return available;
     }
 
-    private bool IsPlaceTaken(int placeX, int placeY, Vector2Int size)
+    public bool IsPlaceTaken(int placeX, int placeY, Vector2Int size)
     {
         for (int x = 0; x < size.x; x++)
         {
