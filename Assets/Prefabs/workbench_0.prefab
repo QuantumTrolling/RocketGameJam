@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8238870262998366073}
   - component: {fileID: -3990720063141841854}
   - component: {fileID: -7862855653799602336}
+  - component: {fileID: -8140986162909047531}
   m_Layer: 0
   m_Name: workbench_0
   m_TagString: Untagged
@@ -95,7 +96,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6162635643412997815}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -146,3 +147,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa02397fdefd2084c91b51db80d8aa29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-8140986162909047531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6162635643412997815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165d40e4199486349894532af0af33d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resources: {fileID: 0}
+  cost: {fileID: 0}
