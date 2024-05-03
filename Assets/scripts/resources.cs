@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class resources : MonoBehaviour
 {
-    //объявление переменных
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     public int resource_fishs;
     public int resource_planks;
     public int resource_pearls;
@@ -30,6 +30,9 @@ public class resources : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        text_planks.text = "" + resource_planks;
+        text_fishs.text = "" + resource_fishs;
+        text_pearls.text = "" + resource_fishs;
+        text_time.text = "" + resource_time;
     }
 }
