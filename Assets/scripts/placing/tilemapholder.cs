@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class TileMapHolder : MonoBehaviour
 {
     public Vector2Int Size;
+    public GameObject wave;
+    public GameObject water;
+    public GameObject[] sand;
+
 
     private Tilemap map;
     private GridCell[,] grid;
@@ -17,6 +22,7 @@ public class TileMapHolder : MonoBehaviour
 
         grid = new GridCell[Size.x, Size.y];
         map.size = new Vector3Int(Size.x, Size.y, 0);
+        var rand = new System.Random();
 
         Vector3 tilePosition;
         Vector3Int coordinate = new Vector3Int(0, 0, 0);
@@ -26,8 +32,44 @@ public class TileMapHolder : MonoBehaviour
             {
                 coordinate.x = x; coordinate.y = y;
                 tilePosition = map.CellToWorld(coordinate);
-                grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, false);
+                if (x==0 || y==0 || x == (map.size.x - 1) || y == (map.size.y - 1 )){
+                if(rand.Next(100)<50){
+                    grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, false);
+                    SandRender(x,y);
+                    WavesRender(x,y);
+                } else{
+                    grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, true);
+                    WaterdRender(x,y);
+                }
+                }else{
+                    grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, false);
+                    SandRender(x,y);
+                }
             }
+        }
+    }
+
+    private void WaterdRender(int x, int y){
+        Instantiate(water, new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,0));
+    }
+
+    private void SandRender(int x, int y){
+        var random = new System.Random();
+        Instantiate(sand[random.Next(0,1)], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,0));
+    }
+
+    private void WavesRender(int x, int y){
+        if (x==0 && y!=0 && y != (map.size.y - 1)){
+            Instantiate(wave, new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,0));
+        }
+        if (x!=0 && y==0 && x!=(map.size.x - 1)){
+            Instantiate(wave, new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,90));
+        }
+        if (x==(map.size.x - 1) && y != (map.size.y - 1) && y!= 0){
+            Instantiate(wave, new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,180));
+        }
+        if (x!=(map.size.x - 1) && y == (map.size.y - 1) && x!= 0){
+            Instantiate(wave, new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,270));
         }
     }
 
