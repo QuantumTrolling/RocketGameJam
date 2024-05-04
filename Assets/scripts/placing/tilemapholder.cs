@@ -9,10 +9,10 @@ public class TileMapHolder : MonoBehaviour
     public Vector2Int Size;
     public GameObject wave;
     public GameObject water;
-    public GameObject[] sand;
-
+    public GameObject sand;
 
     private Tilemap map;
+    private TilesVariants tiles;
     private GridCell[,] grid;
 
 
@@ -35,7 +35,6 @@ public class TileMapHolder : MonoBehaviour
                 if (x==0 || y==0 || x == (map.size.x - 1) || y == (map.size.y - 1 )){
                 if(rand.Next(100)<50){
                     grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, false);
-                    SandRender(x,y);
                     WavesRender(x,y);
                 } else{
                     grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, true);
@@ -43,7 +42,6 @@ public class TileMapHolder : MonoBehaviour
                 }
                 }else{
                     grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, false);
-                    SandRender(x,y);
                 }
             }
         }
@@ -53,9 +51,8 @@ public class TileMapHolder : MonoBehaviour
         Instantiate(water, new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,0));
     }
 
-    private void SandRender(int x, int y){
-        var random = new System.Random();
-        Instantiate(sand[random.Next(0,1)], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,0));
+    private void SanddRender(int x, int y){
+        Instantiate(sand, new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,0));
     }
 
     private void WavesRender(int x, int y){

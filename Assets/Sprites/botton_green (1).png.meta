@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 39660d05ab699a545b9b6e0402e2039c
+guid: 7454dda96e6516c4f9e8ea976b0f98fb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5337840020314442550
-    second: turf_0
+      213: -8320351721909875410
+    second: botton_green (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: turf_0
+      name: botton_green (1)_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 7
-        width: 20
-        height: 18
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ac43b4958ce2ce5b0800000000000000
-      internalID: -5337840020314442550
+      spriteID: e2d8049213c288c80800000000000000
+      internalID: -8320351721909875410
       vertices: []
       indices: 
       edges: []
@@ -131,7 +131,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      turf_0: -5337840020314442550
+      botton_green (1)_0: -8320351721909875410
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
