@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      crab_trap_0: 630028893065884720
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
