@@ -11,6 +11,7 @@ public class moving : MonoBehaviour
     public float speed = 5f;
 
     public TileMapHolder grid;
+
     
     void Start()
     {
@@ -38,15 +39,9 @@ public class moving : MonoBehaviour
         targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         targetPosition.z = transform.position.z;
 
-        
+        bool available = grid.IsAreaBounded(grid.GetGridPosHere(targetPosition).x, grid.GetGridPosHere(targetPosition).y, new Vector2Int(1,1));
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-        
-        if(grid.IsAreaBounded(((int)targetPosition.x), ((int)targetPosition.y), new Vector2Int(8,8)) && grid.IsPlaceTaken(((int)targetPosition.x), ((int)targetPosition.y), new Vector2Int(8,8)))
-        {
-            Debug.Log("Yep");
-        }
-
-        ismoving = true;
+        if(!grid.IsPlaceTaken(grid.GetGridPosHere(targetPosition).x, grid.GetGridPosHere(targetPosition).y, new Vector2Int(1,1)) && available){ ismoving = true; }
         
         }
 
