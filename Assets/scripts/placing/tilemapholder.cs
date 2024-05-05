@@ -12,7 +12,6 @@ public class TileMapHolder : MonoBehaviour
     public GameObject sand;
 
     private Tilemap map;
-    private TilesVariants tiles;
     private GridCell[,] grid;
 
 
