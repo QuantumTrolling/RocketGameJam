@@ -148,3 +148,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Placable: {fileID: 833781690017320374, guid: ee96da66700d14647a8d635e65cca7c8, type: 3}
   Size: {x: 1, y: 1}
+  Ignore: []
