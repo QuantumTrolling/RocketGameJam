@@ -2573,7 +2573,10 @@ MonoBehaviour:
   Size: {x: 8, y: 8}
   wave: {fileID: 6763165695367234170, guid: d9da9c85e4d36984fbd0dd01f2286cbf, type: 3}
   water: {fileID: 7126275756943550687, guid: 9a89ccf9c0c0d1844973f7baaa91fed8, type: 3}
-  sand: {fileID: 8173109407762339147, guid: 347324c74c9e8834c8675c2bd6fc1374, type: 3}
+  sand:
+  - {fileID: 5466197971799796231, guid: d8fc73b1e9388c548bda22fd761c9ce2, type: 3}
+  - {fileID: 8173109407762339147, guid: 347324c74c9e8834c8675c2bd6fc1374, type: 3}
+  - {fileID: 2491440472221101265, guid: aec035535f2cbc948b3b64f3852306e7, type: 3}
 --- !u!1 &1463767363
 GameObject:
   m_ObjectHideFlags: 0
@@ -2956,7 +2959,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7241096484061426959, guid: 3592bbeca81e95243a565d1a5d17eec0, type: 3}
       propertyPath: m_SortingOrder
-      value: -80
+      value: -75
       objectReference: {fileID: 0}
     - target: {fileID: 8302289246290255292, guid: 3592bbeca81e95243a565d1a5d17eec0, type: 3}
       propertyPath: grid
