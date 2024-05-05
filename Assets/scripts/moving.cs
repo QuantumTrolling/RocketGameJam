@@ -33,6 +33,14 @@ public class moving : MonoBehaviour
             Move();
         }   
     }
+   
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.CompareTag("Water")){
+            Debug.Log("Water");
+            ismoving=false;
+        }
+    }
+
     private void SetTargetPosition()
     {
         if (CanMove){
@@ -40,7 +48,6 @@ public class moving : MonoBehaviour
         targetPosition.z = transform.position.z;
 
         bool available = grid.IsAreaBounded(grid.GetGridPosHere(targetPosition).x, grid.GetGridPosHere(targetPosition).y, new Vector2Int(1,1));
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
         if(!grid.IsPlaceTaken(grid.GetGridPosHere(targetPosition).x, grid.GetGridPosHere(targetPosition).y, new Vector2Int(1,1)) && available){ ismoving = true; }
         
         }
