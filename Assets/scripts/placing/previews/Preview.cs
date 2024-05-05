@@ -9,6 +9,7 @@ public class Preview : MonoBehaviour
     [SerializeField] public Placable Placable;
 
     public Vector2Int Size;
+    public Vector2Int[] Ignore;
     private Vector2Int currentGridPose;
 
     private bool isPlacingAvailable;
@@ -52,6 +53,17 @@ public class Preview : MonoBehaviour
         currentGridPose = GridPose;
     }
 
+    private bool IgnoreCheck(int x, int y)
+    {
+        for (int i = 0; i < Ignore.Length; i++){
+            if (Ignore[i].x == x && Ignore[i].y == y)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Placable InstantiateHere()
     {
         if (isPlacingAvailable)
@@ -65,7 +77,9 @@ public class Preview : MonoBehaviour
             {
                 for (int y = 0; y < size.y; y++)
                 {
-                    placeInGrid[index++] = new Cell(currentGridPose.x + x, currentGridPose.y + y);
+                    if (!IgnoreCheck(x,y)){
+                        placeInGrid[index++] = new Cell(currentGridPose.x + x, currentGridPose.y + y);
+                    }
                 }
             }
 
