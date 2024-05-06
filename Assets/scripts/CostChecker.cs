@@ -24,11 +24,5 @@ public class CostChecker : MonoBehaviour
         }
     }
 
-    public void CostDebiting(){
-        resources.resource_fishs -= fish_cost;
-        resources.resource_planks -= plank_cost;
-        resources.resource_pearls -= shell_cost;
-        resources.resource_time -= action_cost;
-    }
 
 }

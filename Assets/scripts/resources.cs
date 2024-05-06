@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class resources : MonoBehaviour
 {
     //���������� ����������
-    public int resource_fishs;
-    public int resource_planks;
-    public int resource_pearls;
-    public int resource_time;
+    public static int resource_fishs;
+    public static int resource_planks;
+    public static int resource_pearls;
+    public static int resource_time;
     public Text text_planks;
     public Text text_fishs;
     public Text text_pearls;

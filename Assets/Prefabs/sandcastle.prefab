@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4952181578141471083}
   - component: {fileID: 8056761608429162069}
   - component: {fileID: -6866885587465283454}
+  - component: {fileID: 5473419721016227181}
   m_Layer: 0
   m_Name: sandcastle
   m_TagString: Untagged
@@ -193,3 +194,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa02397fdefd2084c91b51db80d8aa29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5473419721016227181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802568097442386872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165d40e4199486349894532af0af33d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fish_cost: 0
+  plank_cost: 0
+  shell_cost: 0
+  action_cost: 1

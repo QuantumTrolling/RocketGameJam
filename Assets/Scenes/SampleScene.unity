@@ -620,10 +620,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d47ba37a9693a1c43abeb4673ddfc0f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resource_fishs: 0
-  resource_planks: 0
-  resource_pearls: 0
-  resource_time: 0
   text_planks: {fileID: 63421382}
   text_fishs: {fileID: 1165001797}
   text_pearls: {fileID: 444875620}
@@ -771,7 +767,7 @@ MonoBehaviour:
   fish_cost: 0
   plank_cost: 0
   shell_cost: 0
-  action_cost: 0
+  action_cost: 1
   button: {fileID: 294229140}
   resources: {fileID: 253592136}
 --- !u!114 &294229140
@@ -1315,7 +1311,7 @@ MonoBehaviour:
   fish_cost: 0
   plank_cost: 0
   shell_cost: 0
-  action_cost: 0
+  action_cost: 1
   button: {fileID: 453054646}
   resources: {fileID: 253592136}
 --- !u!114 &453054646

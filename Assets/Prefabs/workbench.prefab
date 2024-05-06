@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4386986157514147038}
   - component: {fileID: 6522810803239844105}
   - component: {fileID: -2470196443035798062}
+  - component: {fileID: -9065913574867861689}
   m_Layer: 0
   m_Name: workbench
   m_TagString: Untagged
@@ -146,3 +147,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa02397fdefd2084c91b51db80d8aa29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-9065913574867861689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322181843184137276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165d40e4199486349894532af0af33d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fish_cost: 0
+  plank_cost: 0
+  shell_cost: 0
+  action_cost: 1
