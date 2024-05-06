@@ -116,7 +116,7 @@ public class TileMapHolder : MonoBehaviour
     public bool IsBuildAvailable(Vector2Int gridPose, Preview preview)
     {
         bool available = IsAreaBounded(gridPose.x, gridPose.y, preview.GetSize());
-        if (available && IsPlaceTaken(gridPose.x, gridPose.y, preview.GetSize())) { available = false; }
+        if (available && IsPlaceTaken(gridPose.x - preview.Modifier(), gridPose.y - preview.Modifier(), preview.GetSize())) { available = false; }
 
         return available;
     }
