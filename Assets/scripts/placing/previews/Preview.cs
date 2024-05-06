@@ -43,12 +43,17 @@ public class Preview : MonoBehaviour
     {
         if (isMoving)
         {
-            transform.position = position;
-            if (Size.x == 3){
-                modif = 1;
-            } else{
-                modif = 0;
+            if (Size.x%2==0){
+                position.x += Size.x/2 - 0.5f;
+            }else{
+                position.x += (Size.x -1)/2;
             }
+            if (Size.y%2==0){
+                position.y += Size.y/2 - 0.5f;
+            }else{
+                position.y += (Size.y -1)/2;
+            }
+            transform.position = position;
             currentGridPose = GridPose;
             SetBuildAvailable(isBuildAvailable());
         }
@@ -113,10 +118,6 @@ public class Preview : MonoBehaviour
     public bool IsBuildAvailable()
     {
         return isPlacingAvailable;
-    }
-
-    public int Modifier(){
-        return modif;
     }
 
     public virtual Vector2Int GetSize()
