@@ -18,6 +18,7 @@ public class Preview : MonoBehaviour
     protected SpriteRenderer MainRenderer;
     private Color green;
     private Color red;
+    public int modif;
 
 
 
@@ -42,6 +43,16 @@ public class Preview : MonoBehaviour
     {
         if (isMoving)
         {
+            if (Size.x%2==0){
+                position.x += Size.x/2 - 0.5f;
+            }else{
+                position.x += (Size.x -1)/2;
+            }
+            if (Size.y%2==0){
+                position.y += Size.y/2 - 0.5f;
+            }else{
+                position.y += (Size.y -1)/2;
+            }
             transform.position = position;
             currentGridPose = GridPose;
             SetBuildAvailable(isBuildAvailable());
@@ -78,7 +89,7 @@ public class Preview : MonoBehaviour
                 for (int y = 0; y < size.y; y++)
                 {
                     if (!IgnoreCheck(x,y)){
-                        placeInGrid[index++] = new Cell(currentGridPose.x + x, currentGridPose.y + y);
+                        placeInGrid[index++] = new Cell(currentGridPose.x + x - modif, currentGridPose.y + y - modif);
                     }
                 }
             }
