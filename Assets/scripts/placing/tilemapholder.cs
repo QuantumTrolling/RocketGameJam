@@ -10,6 +10,7 @@ public class TileMapHolder : MonoBehaviour
     public GameObject wave;
     public GameObject water;
     public GameObject[] sand;
+    private int raund = 1;
 
     private Tilemap map;
     private GridCell[,] grid;
@@ -32,7 +33,11 @@ public class TileMapHolder : MonoBehaviour
                 coordinate.x = x; coordinate.y = y;
                 tilePosition = map.CellToWorld(coordinate);
                 if (x==0 || y==0 || x == (map.size.x - 1) || y == (map.size.y - 1 )){
-                if(rand.Next(100)<50){
+                if ((x==0 && y==0) || (x==0 && y==(map.size.y - 1 )) || (x== (map.size.x - 1 ) && y == (map.size.y - 1 )) || (x== (map.size.x - 1 ) && y==0)){
+                    grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, true);
+                    WaterdRender(x,y);
+                } else{
+                if(rand.Next(100)<60){
                     grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, false);
                     SandRender(x,y);
                     WavesRender(x,y);
@@ -40,9 +45,64 @@ public class TileMapHolder : MonoBehaviour
                     grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, true);
                     WaterdRender(x,y);
                 }
+                }
                 }else{
                     grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, false);
                     SandRender(x,y);
+                }
+            }
+        }
+    }
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Q)){
+            Sinking(raund);
+            raund++;
+        }
+    }
+
+    private void Sinking(int raund){
+        var rand = new System.Random();
+        for (int x = raund; x < map.size.x - raund; x++){
+            for (int y = raund; y < map.size.y - raund; y++){
+                if(( x == raund && y == raund) || (x==raund && y==(map.size.y - 1 - raund)) || (y==raund && x == (map.size.x - 1 - raund)) || (x == (map.size.x - 1 -raund) && y == (map.size.y - 1 -raund))){
+                    grid[x,y].IsOccupied = true;
+                    WaterdRender(x,y);
+                }
+                if ( x == raund){
+                    if(grid[x - 1,y].IsOccupied && rand.Next(100)<60){
+                        grid[x,y].IsOccupied = true;
+                        WaterdRender(x,y);
+                    }else{
+                        grid[x - 1,y].IsOccupied = true;
+                        WaterdRender(x - 1,y);
+                    }
+                }
+                if ( y == raund){
+                    if(grid[x,y - 1].IsOccupied && rand.Next(100)<60){
+                        grid[x,y].IsOccupied = true;
+                        WaterdRender(x,y);
+                    }else{
+                        grid[x,y - 1].IsOccupied = true;
+                        WaterdRender(x,y - 1);
+                    }
+                }
+                if ( x == map.size.x - 1 - raund){
+                    if(grid[x + 1,y].IsOccupied && rand.Next(100)<60){
+                        grid[x,y].IsOccupied = true;
+                        WaterdRender(x,y);
+                    }else{
+                        grid[x + 1,y].IsOccupied = true;
+                        WaterdRender(x + 1,y);
+                    }
+                }
+                if ( y == map.size.y - 1 - raund){
+                    if(grid[x,y + 1].IsOccupied && rand.Next(100)<60){
+                        grid[x,y].IsOccupied = true;
+                        WaterdRender(x,y);
+                    }else{
+                        grid[x,y + 1].IsOccupied = true;
+                        WaterdRender(x,y + 1);
+                    }
                 }
             }
         }
