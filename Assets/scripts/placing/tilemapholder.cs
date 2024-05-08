@@ -68,7 +68,7 @@ public class TileMapHolder : MonoBehaviour
                     grid[x,y].IsOccupied = true;
                     WaterdRender(x,y);
                 }
-                if ( x == raund && y!=raund && (y != (map.size.y - 1 - raund))){
+                if ( x == raund){
                     if(grid[x - 1,y].IsOccupied && rand.Next(100)<60){
                         grid[x,y].IsOccupied = true;
                         WaterdRender(x,y);
@@ -77,7 +77,7 @@ public class TileMapHolder : MonoBehaviour
                         WaterdRender(x - 1,y);
                     }
                 }
-                if ( y == raund && x!=raund && (x != (map.size.x - 1 - raund))){
+                if ( y == raund){
                     if(grid[x,y - 1].IsOccupied && rand.Next(100)<60){
                         grid[x,y].IsOccupied = true;
                         WaterdRender(x,y);
@@ -86,7 +86,7 @@ public class TileMapHolder : MonoBehaviour
                         WaterdRender(x,y - 1);
                     }
                 }
-                if ( x == map.size.x - 1 - raund && y!=raund && (y != (map.size.y - 1 - raund))){
+                if ( x == map.size.x - 1 - raund){
                     if(grid[x + 1,y].IsOccupied && rand.Next(100)<60){
                         grid[x,y].IsOccupied = true;
                         WaterdRender(x,y);
@@ -95,7 +95,7 @@ public class TileMapHolder : MonoBehaviour
                         WaterdRender(x + 1,y);
                     }
                 }
-                if ( y == map.size.y - 1 - raund && x!=raund && (x != (map.size.x - 1 - raund))){
+                if ( y == map.size.y - 1 - raund){
                     if(grid[x,y + 1].IsOccupied && rand.Next(100)<60){
                         grid[x,y].IsOccupied = true;
                         WaterdRender(x,y);
