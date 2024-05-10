@@ -18,8 +18,6 @@ public class Preview : MonoBehaviour
     protected SpriteRenderer MainRenderer;
     private Color green;
     private Color red;
-    public int modif;
-
 
 
     private void Awake()
@@ -89,7 +87,7 @@ public class Preview : MonoBehaviour
                 for (int y = 0; y < size.y; y++)
                 {
                     if (!IgnoreCheck(x,y)){
-                        placeInGrid[index++] = new Cell(currentGridPose.x + x - modif, currentGridPose.y + y - modif);
+                        placeInGrid[index++] = new Cell(currentGridPose.x + x , currentGridPose.y + y);
                     }
                 }
             }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Unity.VisualScripting;
 
 public class TileMapHolder : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class TileMapHolder : MonoBehaviour
     public GameObject wave;
     public GameObject water;
     public GameObject[] sand;
+    public Placer placer;
     private int raund = 1;
 
     private Tilemap map;
@@ -65,48 +67,68 @@ public class TileMapHolder : MonoBehaviour
         for (int x = raund; x < map.size.x - raund; x++){
             for (int y = raund; y < map.size.y - raund; y++){
                 if(( x == raund && y == raund) || (x==raund && y==(map.size.y - 1 - raund)) || (y==raund && x == (map.size.x - 1 - raund)) || (x == (map.size.x - 1 -raund) && y == (map.size.y - 1 -raund))){
+                    //Destroying(x,y);
                     grid[x,y].IsOccupied = true;
                     WaterdRender(x,y);
                 }
                 if ( x == raund){
                     if(grid[x - 1,y].IsOccupied && rand.Next(100)<60){
                         grid[x,y].IsOccupied = true;
+                        //Destroying(x,y);
                         WaterdRender(x,y);
                     }else{
                         grid[x - 1,y].IsOccupied = true;
+                        Destroying(x - 1,y);
                         WaterdRender(x - 1,y);
                     }
                 }
                 if ( y == raund){
                     if(grid[x,y - 1].IsOccupied && rand.Next(100)<60){
                         grid[x,y].IsOccupied = true;
+                        //Destroying(x,y);
                         WaterdRender(x,y);
                     }else{
                         grid[x,y - 1].IsOccupied = true;
+                        //Destroying(x,y - 1);
                         WaterdRender(x,y - 1);
                     }
                 }
                 if ( x == map.size.x - 1 - raund){
                     if(grid[x + 1,y].IsOccupied && rand.Next(100)<60){
                         grid[x,y].IsOccupied = true;
+                        //Destroying(x,y);
                         WaterdRender(x,y);
                     }else{
                         grid[x + 1,y].IsOccupied = true;
+                       //Destroying(x + 1,y);
                         WaterdRender(x + 1,y);
                     }
                 }
                 if ( y == map.size.y - 1 - raund){
                     if(grid[x,y + 1].IsOccupied && rand.Next(100)<60){
                         grid[x,y].IsOccupied = true;
+                        //Destroying(x,y);
                         WaterdRender(x,y);
                     }else{
                         grid[x,y + 1].IsOccupied = true;
+                        //Destroying(x,y + 1);
                         WaterdRender(x,y + 1);
                     }
                 }
             }
         }
     }
+
+    private void Destroying(int x, int y){
+        for (int i=0;i<placer.placedThings.Count;i++){
+            Debug.Log("transform " + placer.placedThings[i].transform.position.x  + " " + placer.placedThings[i].transform.position.y);
+            Debug.Log("grid " + grid[x,y].centerX + " " + grid[x,y].centerY);
+            if ((placer.placedThings[i].transform.position.x == grid[x,y].centerX) && (placer.placedThings[i].transform.position.y == grid[x,y].centerY)){
+                Debug.Log("Destroy");
+                Destroy(placer.placedThings[i].gameObject);
+            }
+        }
+    } 
 
     private void WaterdRender(int x, int y){
         Instantiate(water, new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,0));
