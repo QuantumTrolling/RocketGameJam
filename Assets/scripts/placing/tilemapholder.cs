@@ -66,6 +66,7 @@ public class TileMapHolder : MonoBehaviour
         var rand = new System.Random();
         for (int x = raund; x < map.size.x - raund; x++){
             for (int y = raund; y < map.size.y - raund; y++){
+                Destroying(x,y);
                 if(( x == raund && y == raund) || (x==raund && y==(map.size.y - 1 - raund)) || (y==raund && x == (map.size.x - 1 - raund)) || (x == (map.size.x - 1 -raund) && y == (map.size.y - 1 -raund))){
                     //Destroying(x,y);
                     grid[x,y].IsOccupied = true;
@@ -78,7 +79,7 @@ public class TileMapHolder : MonoBehaviour
                         WaterdRender(x,y);
                     }else{
                         grid[x - 1,y].IsOccupied = true;
-                        Destroying(x - 1,y);
+                        //Destroying(x - 1,y);
                         WaterdRender(x - 1,y);
                     }
                 }
@@ -120,13 +121,10 @@ public class TileMapHolder : MonoBehaviour
     }
 
     private void Destroying(int x, int y){
-        for (int i=0;i<placer.placedThings.Count;i++){
-            Debug.Log("transform " + placer.placedThings[i].transform.position.x  + " " + placer.placedThings[i].transform.position.y);
-            Debug.Log("grid " + grid[x,y].centerX + " " + grid[x,y].centerY);
-            if ((placer.placedThings[i].transform.position.x == grid[x,y].centerX) && (placer.placedThings[i].transform.position.y == grid[x,y].centerY)){
-                Debug.Log("Destroy");
-                Destroy(placer.placedThings[i].gameObject);
-            }
+        Ray ray = new Ray (new Vector3(grid[x,y].centerX, grid[x,y].centerY, 5), new Vector3(0, 0, -10));
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit)){
+            Debug.Log("I think I hit it " + hit.collider.name);
         }
     } 
 
