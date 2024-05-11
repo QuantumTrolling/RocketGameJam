@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4551793690628592891}
   - component: {fileID: 5123894788846900033}
-  - component: {fileID: 6142320284290932305}
   - component: {fileID: 833781690017320374}
   - component: {fileID: -1097018919332130610}
+  - component: {fileID: 5289069207719541906}
   m_Layer: 0
   m_Name: crab_trap
   m_TagString: Structure
@@ -89,7 +89,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &6142320284290932305
+--- !u!114 &833781690017320374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5469911108128048677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa02397fdefd2084c91b51db80d8aa29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1097018919332130610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5469911108128048677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165d40e4199486349894532af0af33d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fish_cost: 0
+  plank_cost: 0
+  shell_cost: 0
+  action_cost: 1
+--- !u!61 &5289069207719541906
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,33 +161,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.32, y: 0.28}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &833781690017320374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5469911108128048677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa02397fdefd2084c91b51db80d8aa29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-1097018919332130610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5469911108128048677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 165d40e4199486349894532af0af33d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fish_cost: 0
-  plank_cost: 0
-  shell_cost: 0
-  action_cost: 1
