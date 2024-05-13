@@ -67,12 +67,13 @@ public class TileMapHolder : MonoBehaviour
         var rand = new System.Random();
         for (int x = raund; x < map.size.x - raund; x++){
             for (int y = raund; y < map.size.y - raund; y++){
+                Destroying(x,y);
                 if(( x == raund && y == raund) || (x==raund && y==(map.size.y - 1 - raund)) || (y==raund && x == (map.size.x - 1 - raund)) || (x == (map.size.x - 1 -raund) && y == (map.size.y - 1 -raund))){
                     if (x==raund){
-                        Destroying(x,y, -1,0);
+                        //Destroying(x,y, -1,0);
                     }
                     if (x==(map.size.x - 1 - raund)){
-                        Destroying(x,y, 1,0);
+                        //Destroying(x,y, 1,0);
                     }
                     grid[x,y].IsOccupied = true;
                     WaterdRender(x,y);
@@ -80,44 +81,44 @@ public class TileMapHolder : MonoBehaviour
                 if ( x == raund){
                     if(grid[x - 1,y].IsOccupied && rand.Next(100)<60){
                         grid[x,y].IsOccupied = true;
-                        Destroying(x,y, -1, 0);
+                        //Destroying(x,y, -1, 0);
                         WaterdRender(x,y);
                     }else{
                         grid[x - 1,y].IsOccupied = true;
-                        Destroying(x - 1,y, -1 ,0);
+                        //Destroying(x - 1,y, -1 ,0);
                         WaterdRender(x - 1,y);
                     }
                 }
                 if ( y == raund){
                     if(grid[x,y - 1].IsOccupied && rand.Next(100)<60){
                         grid[x,y].IsOccupied = true;
-                        Destroying(x,y, 0, -1);
+                        //Destroying(x,y, 0, -1);
                         WaterdRender(x,y);
                     }else{
                         grid[x,y - 1].IsOccupied = true;
-                        Destroying(x,y - 1, 0, -1);
+                        //Destroying(x,y - 1, 0, -1);
                         WaterdRender(x,y - 1);
                     }
                 }
                 if ( x == map.size.x - 1 - raund){
                     if(grid[x + 1,y].IsOccupied && rand.Next(100)<60){
                         grid[x,y].IsOccupied = true;
-                        Destroying(x,y, 1, 0);
+                        //Destroying(x,y, 1, 0);
                         WaterdRender(x,y);
                     }else{
                         grid[x + 1,y].IsOccupied = true;
-                        Destroying(x + 1,y, 1, 0);
+                        //Destroying(x + 1,y, 1, 0);
                         WaterdRender(x + 1,y);
                     }
                 }
                 if ( y == map.size.y - 1 - raund){
                     if(grid[x,y + 1].IsOccupied && rand.Next(100)<60){
                         grid[x,y].IsOccupied = true;
-                        Destroying(x,y, 0, 1);
+                        //Destroying(x,y, 0, 1);
                         WaterdRender(x,y);
                     }else{
                         grid[x,y + 1].IsOccupied = true;
-                        Destroying(x,y + 1, 0, 1);
+                        //Destroying(x,y + 1, 0, 1);
                         WaterdRender(x,y + 1);
                     }
                 }
@@ -125,10 +126,11 @@ public class TileMapHolder : MonoBehaviour
         }
     }
 
-    private void Destroying(int x, int y, int dx, int dy){
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(grid[x,y].centerX + dx, grid[x,y].centerY + dy), new Vector2(-dx,-dy));
-        if (hit && hit.collider.gameObject.tag == "Structure"){
-            Destroy(hit.collider.gameObject);
+    private void Destroying(int x, int y){
+        Ray ray = new Ray(new Vector3(grid[x,y].centerX, grid[x,y].centerY, 2), new Vector3(0,0,-2));
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit)){
+            Debug.Log(hit.collider.gameObject.name);
         }
     } 
 
