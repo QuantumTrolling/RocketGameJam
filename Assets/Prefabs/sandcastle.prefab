@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 5473419721016227181}
   - component: {fileID: 3224487546957406386}
   - component: {fileID: 2189457040752346150}
+  - component: {fileID: -9208121090255204614}
+  - component: {fileID: -6577843626936478697}
   m_Layer: 0
   m_Name: sandcastle
   m_TagString: Structure
@@ -160,3 +162,45 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.25673887, y: 1.0277519, z: 1}
   m_Center: {x: 0.3538867, y: -0.13436757, z: 0}
+--- !u!65 &-9208121090255204614
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802568097442386872}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.25673887, y: 1.0277519, z: 1}
+  m_Center: {x: 0.3538867, y: -0.13436757, z: 0}
+--- !u!65 &-6577843626936478697
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802568097442386872}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3180588, y: 1.0543584, z: 0.2}
+  m_Center: {x: -0.3409706, y: -0.13948822, z: 0}
