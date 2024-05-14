@@ -96,8 +96,7 @@ public class TileMapHolder : MonoBehaviour
                     }
                 }
                 if ( x == map.size.x - 1 - raund){
-                    if(grid[x + 1,y].IsOccupied && rand.Next(100)<60){
-                        grid[x,y].IsOccupied = true;
+                    if(grid[x + 1,y].isSinking && rand.Next(100)<60){
                         grid[x,y].isSinking = true;
                         WaterdRender(x,y);
                     }else{
@@ -107,8 +106,7 @@ public class TileMapHolder : MonoBehaviour
                     }
                 }
                 if ( y == map.size.y - 1 - raund){
-                    if(grid[x,y + 1].IsOccupied && rand.Next(100)<60){
-                        grid[x,y].IsOccupied = true;
+                    if(grid[x,y + 1].isSinking && rand.Next(100)<60){
                         grid[x,y].isSinking = true;
                         WaterdRender(x,y);
                     }else{
@@ -117,9 +115,12 @@ public class TileMapHolder : MonoBehaviour
                         WaterdRender(x,y + 1);
                     }
                 }
-                
+                if (grid[x,y].isSinking){
+                    Debug.Log("Yep");
+                }
             }
         }
+        
     }
 
     private void Destroying(int x, int y){
@@ -128,6 +129,15 @@ public class TileMapHolder : MonoBehaviour
         if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.tag == "Structure"){
             Destroy(hit.collider.gameObject);
         }
+    }
+
+    private bool WaterCheck(int x, int y){
+        Ray ray = new Ray(new Vector3(grid[x,y].centerX, grid[x,y].centerY, 10), new Vector3(0,0,-10));
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.tag == "Water"){
+            return true;
+        }
+        return false;
     } 
 
     private void WaterdRender(int x, int y){
