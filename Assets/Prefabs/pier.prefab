@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5249953920392021197}
   - component: {fileID: 8504645687649237931}
   - component: {fileID: -4058468733520181013}
+  - component: {fileID: 8161519000290858986}
   m_Layer: 0
   m_Name: pier
   m_TagString: Structure
@@ -204,3 +205,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.93271446, y: 1.1211367, z: 1}
   m_Center: {x: 0, y: 0.54240704, z: 0}
+--- !u!114 &8161519000290858986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2816858385966357388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3988a94fcb2d5fd4194a707f11b5db16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  add_fish: 4
+  add_plank: 0
+  add_shell: 0

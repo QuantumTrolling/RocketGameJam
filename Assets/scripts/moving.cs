@@ -34,7 +34,7 @@ public class moving : MonoBehaviour
         }   
     }
    
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter(Collider other) {
         if(other.CompareTag("Water")){
             Debug.Log("Water");
             ismoving=false;

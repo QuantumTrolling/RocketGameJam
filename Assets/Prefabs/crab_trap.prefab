@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -1097018919332130610}
   - component: {fileID: 7622701114876292676}
   - component: {fileID: -2389917999393415403}
+  - component: {fileID: 3504258962209365378}
   m_Layer: 0
   m_Name: crab_trap
   m_TagString: Structure
@@ -160,3 +161,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3504258962209365378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5469911108128048677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3988a94fcb2d5fd4194a707f11b5db16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  add_fish: 0
+  add_plank: 0
+  add_shell: 0
+  add_action: 0

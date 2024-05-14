@@ -59,6 +59,7 @@ public class TileMapHolder : MonoBehaviour
     public void NextRound() {
         Sinking(raund);
         raund++;
+        resources.Raund++;
     }
 
     private void Sinking(int raund){
@@ -72,7 +73,7 @@ public class TileMapHolder : MonoBehaviour
                     WaterdRender(x,y);
                 }
                 if ( x == raund){
-                    if(grid[x,y].isSinking && grid[x,y].IsOccupied && rand.Next(100)<60){
+                    if(grid[x,y].isSinking && grid[x,y].IsOccupied && rand.Next(100)<70){
                         grid[x + 1 ,y].isSinking = true;
                         grid[x + 1, y].IsOccupied = true;
                         Destroying(x+1,y);
