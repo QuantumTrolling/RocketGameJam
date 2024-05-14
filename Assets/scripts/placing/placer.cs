@@ -42,7 +42,7 @@ public class Placer : MonoBehaviour
             placablePreview = null;
             return;
         }
-        else if (Input.GetKeyDown(KeyCode.E) && d <= 5)
+        else if (Input.GetKeyDown(KeyCode.E) && d <= 10)
         {
             InstantiatePlacable();
         }

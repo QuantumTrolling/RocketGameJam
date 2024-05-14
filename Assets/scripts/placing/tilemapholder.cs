@@ -1,8 +1,10 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Unity.VisualScripting;
+using Unity.Mathematics;
 
 public class TileMapHolder : MonoBehaviour
 {
@@ -10,7 +12,8 @@ public class TileMapHolder : MonoBehaviour
     public GameObject wave;
     public GameObject water;
     public GameObject[] sand;
-    private int raund = 1;
+    public Placer placer;
+    private int raund = 0;
 
     private Tilemap map;
     private GridCell[,] grid;
@@ -34,20 +37,20 @@ public class TileMapHolder : MonoBehaviour
                 tilePosition = map.CellToWorld(coordinate);
                 if (x==0 || y==0 || x == (map.size.x - 1) || y == (map.size.y - 1 )){
                 if ((x==0 && y==0) || (x==0 && y==(map.size.y - 1 )) || (x== (map.size.x - 1 ) && y == (map.size.y - 1 )) || (x== (map.size.x - 1 ) && y==0)){
-                    grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, true);
+                    grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, true, true);
                     WaterdRender(x,y);
                 } else{
                 if(rand.Next(100)<60){
-                    grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, false);
+                    grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, false, false);
                     SandRender(x,y);
                     WavesRender(x,y);
                 } else{
-                    grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, true);
+                    grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, true, true);
                     WaterdRender(x,y);
                 }
                 }
                 }else{
-                    grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, false);
+                    grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, false, false);
                     SandRender(x,y);
                 }
             }
@@ -65,48 +68,84 @@ public class TileMapHolder : MonoBehaviour
         for (int x = raund; x < map.size.x - raund; x++){
             for (int y = raund; y < map.size.y - raund; y++){
                 if(( x == raund && y == raund) || (x==raund && y==(map.size.y - 1 - raund)) || (y==raund && x == (map.size.x - 1 - raund)) || (x == (map.size.x - 1 -raund) && y == (map.size.y - 1 -raund))){
+                    grid[x,y].isSinking = true;
                     grid[x,y].IsOccupied = true;
+                    Destroying(x,y);
                     WaterdRender(x,y);
                 }
                 if ( x == raund){
-                    if(grid[x - 1,y].IsOccupied && rand.Next(100)<60){
+                    if(grid[x,y].isSinking && grid[x,y].IsOccupied && rand.Next(100)<60){
+                        grid[x + 1 ,y].isSinking = true;
+                        grid[x + 1, y].IsOccupied = true;
+                        Destroying(x+1,y);
+                        WaterdRender(x+1,y);
+                    }else if (!grid[x,y].isSinking){
+                        grid[x,y].isSinking = true;
                         grid[x,y].IsOccupied = true;
+                        Destroying(x,y);
                         WaterdRender(x,y);
-                    }else{
-                        grid[x - 1,y].IsOccupied = true;
-                        WaterdRender(x - 1,y);
                     }
                 }
                 if ( y == raund){
-                    if(grid[x,y - 1].IsOccupied && rand.Next(100)<60){
+                    if(grid[x,y].isSinking &&  grid[x,y].IsOccupied && rand.Next(100)<60){
+                        grid[x,y + 1].isSinking = true;
+                        grid[x,y + 1].IsOccupied = true;
+                        Destroying(x,y + 1);
+                        WaterdRender(x,y + 1);
+                    }else if (!grid[x,y].isSinking){
+                        grid[x,y].isSinking = true;
                         grid[x,y].IsOccupied = true;
+                        Destroying(x,y);
                         WaterdRender(x,y);
-                    }else{
-                        grid[x,y - 1].IsOccupied = true;
-                        WaterdRender(x,y - 1);
                     }
                 }
                 if ( x == map.size.x - 1 - raund){
-                    if(grid[x + 1,y].IsOccupied && rand.Next(100)<60){
+                    if(grid[x,y].isSinking && grid[x,y].IsOccupied && rand.Next(100)<60){
+                        grid[x - 1,y].isSinking = true;
+                        grid[x - 1,y].IsOccupied = true;
+                        Destroying(x - 1,y);
+                        WaterdRender(x - 1,y);
+                    }else if (!grid[x,y].isSinking){
+                        grid[x,y].isSinking = true;
                         grid[x,y].IsOccupied = true;
+                        Destroying(x,y);
                         WaterdRender(x,y);
-                    }else{
-                        grid[x + 1,y].IsOccupied = true;
-                        WaterdRender(x + 1,y);
                     }
                 }
                 if ( y == map.size.y - 1 - raund){
-                    if(grid[x,y + 1].IsOccupied && rand.Next(100)<60){
+                    if(grid[x,y].isSinking && grid[x,y].IsOccupied && rand.Next(100)<60){
+                        grid[x,y - 1].isSinking = true;
+                        grid[x,y - 1].IsOccupied = true;
+                        Destroying(x,y - 1);
+                        WaterdRender(x,y - 1);
+                    }else if (!grid[x,y].isSinking){
+                        grid[x,y].isSinking = true;
                         grid[x,y].IsOccupied = true;
+                        Destroying(x,y);
                         WaterdRender(x,y);
-                    }else{
-                        grid[x,y + 1].IsOccupied = true;
-                        WaterdRender(x,y + 1);
                     }
                 }
             }
         }
+        
     }
+
+    private void Destroying(int x, int y){
+        Ray ray = new Ray(new Vector3(grid[x,y].centerX, grid[x,y].centerY, 10), new Vector3(0,0,-10));
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.tag == "Structure"){
+            Destroy(hit.collider.gameObject);
+        }
+    }
+
+    private bool WaterCheck(int x, int y){
+        Ray ray = new Ray(new Vector3(grid[x,y].centerX, grid[x,y].centerY, 10), new Vector3(0,0,-10));
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.tag == "Water"){
+            return true;
+        }
+        return false;
+    } 
 
     private void WaterdRender(int x, int y){
         Instantiate(water, new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,0));

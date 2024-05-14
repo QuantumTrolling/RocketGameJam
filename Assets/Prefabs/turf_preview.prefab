@@ -118,7 +118,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -132,7 +132,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &-7148927544350790430
 MonoBehaviour:
@@ -148,3 +148,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Placable: {fileID: 5710185273927458105, guid: 1d944d9e52cd8034bb9b8901a99eb2ba, type: 3}
   Size: {x: 1, y: 1}
+  Ignore: []

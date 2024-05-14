@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      turf_with_a_seed_0: -4592729914529523414
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

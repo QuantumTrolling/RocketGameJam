@@ -2424,16 +2424,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f39af2bbb80be64d9937ea99c4be1f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &1008267661
-BoxCollider2D:
+--- !u!65 &1008267657
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1008267653}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -2442,34 +2439,60 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_ForceSendLayers:
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.14367576, y: 0.24528626, z: 1}
+  m_Center: {x: 0.007471397, y: -0.03735688, z: 0}
+--- !u!65 &1008267658
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008267653}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
+    m_Bits: 0
+  m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -0.00079993904, y: -0.030660834}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
-    newSize: {x: 0.32, y: 0.32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.12948775, y: 0.22815707}
-  m_EdgeRadius: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1376988, y: 0.2632176, z: 1}
+  m_Center: {x: 0.010459881, y: -0.028391212, z: 0}
+--- !u!54 &1008267661
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008267653}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 1
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &1122785799
 GameObject:
   m_ObjectHideFlags: 0
@@ -3062,6 +3085,7 @@ MonoBehaviour:
   - {fileID: 5466197971799796231, guid: d8fc73b1e9388c548bda22fd761c9ce2, type: 3}
   - {fileID: 8173109407762339147, guid: 347324c74c9e8834c8675c2bd6fc1374, type: 3}
   - {fileID: 2491440472221101265, guid: aec035535f2cbc948b3b64f3852306e7, type: 3}
+  placer: {fileID: 1387427019}
 --- !u!1 &1463767363
 GameObject:
   m_ObjectHideFlags: 0
@@ -3582,6 +3606,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: hero-idle-front
       objectReference: {fileID: 0}
+    - target: {fileID: 3086506610411950498, guid: 3592bbeca81e95243a565d1a5d17eec0, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7241096484061426959, guid: 3592bbeca81e95243a565d1a5d17eec0, type: 3}
       propertyPath: m_SortingOrder
       value: -75
@@ -3590,10 +3618,18 @@ PrefabInstance:
       propertyPath: grid
       value: 
       objectReference: {fileID: 1387427020}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2019991190096829832, guid: 3592bbeca81e95243a565d1a5d17eec0, type: 3}
+    - {fileID: 797037872286866971, guid: 3592bbeca81e95243a565d1a5d17eec0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3086506610411950498, guid: 3592bbeca81e95243a565d1a5d17eec0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1008267658}
+    - targetCorrespondingSourceObject: {fileID: 3086506610411950498, guid: 3592bbeca81e95243a565d1a5d17eec0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1008267657}
     - targetCorrespondingSourceObject: {fileID: 3086506610411950498, guid: 3592bbeca81e95243a565d1a5d17eec0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1008267661}
