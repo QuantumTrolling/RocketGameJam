@@ -13,7 +13,7 @@ public class TileMapHolder : MonoBehaviour
     public GameObject water;
     public GameObject[] sand;
     public Placer placer;
-    private int raund = 1;
+    private int raund = 0;
 
     private Tilemap map;
     private GridCell[,] grid;
@@ -67,56 +67,63 @@ public class TileMapHolder : MonoBehaviour
         var rand = new System.Random();
         for (int x = raund; x < map.size.x - raund; x++){
             for (int y = raund; y < map.size.y - raund; y++){
-                Destroying(x,y);
                 if(( x == raund && y == raund) || (x==raund && y==(map.size.y - 1 - raund)) || (y==raund && x == (map.size.x - 1 - raund)) || (x == (map.size.x - 1 -raund) && y == (map.size.y - 1 -raund))){
-                    grid[x,y].IsOccupied = true;
                     grid[x,y].isSinking = true;
+                    grid[x,y].IsOccupied = true;
+                    Destroying(x,y);
                     WaterdRender(x,y);
                 }
                 if ( x == raund){
-                    if(grid[x - 1,y].isSinking && rand.Next(100)<60){
-                        grid[x,y].IsOccupied = true;
+                    if(grid[x,y].isSinking && grid[x,y].IsOccupied && rand.Next(100)<60){
+                        grid[x + 1 ,y].isSinking = true;
+                        grid[x + 1, y].IsOccupied = true;
+                        Destroying(x+1,y);
+                        WaterdRender(x+1,y);
+                    }else if (!grid[x,y].isSinking){
                         grid[x,y].isSinking = true;
+                        grid[x,y].IsOccupied = true;
+                        Destroying(x,y);
                         WaterdRender(x,y);
-                    }else{
-                        grid[x - 1,y].IsOccupied = true;
-                        grid[x - 1,y].isSinking = true;
-                        WaterdRender(x - 1,y);
                     }
                 }
                 if ( y == raund){
-                    if(grid[x,y - 1].isSinking && rand.Next(100)<60){
-                        grid[x,y].IsOccupied = true;
+                    if(grid[x,y].isSinking &&  grid[x,y].IsOccupied && rand.Next(100)<60){
+                        grid[x,y + 1].isSinking = true;
+                        grid[x,y + 1].IsOccupied = true;
+                        Destroying(x,y + 1);
+                        WaterdRender(x,y + 1);
+                    }else if (!grid[x,y].isSinking){
                         grid[x,y].isSinking = true;
+                        grid[x,y].IsOccupied = true;
+                        Destroying(x,y);
                         WaterdRender(x,y);
-                    }else{
-                        grid[x,y - 1].IsOccupied = true;
-                        grid[x,y - 1].isSinking = true;
-                        WaterdRender(x,y - 1);
                     }
                 }
                 if ( x == map.size.x - 1 - raund){
-                    if(grid[x + 1,y].isSinking && rand.Next(100)<60){
+                    if(grid[x,y].isSinking && grid[x,y].IsOccupied && rand.Next(100)<60){
+                        grid[x - 1,y].isSinking = true;
+                        grid[x - 1,y].IsOccupied = true;
+                        Destroying(x - 1,y);
+                        WaterdRender(x - 1,y);
+                    }else if (!grid[x,y].isSinking){
                         grid[x,y].isSinking = true;
+                        grid[x,y].IsOccupied = true;
+                        Destroying(x,y);
                         WaterdRender(x,y);
-                    }else{
-                        grid[x + 1,y].IsOccupied = true;
-                        grid[x + 1,y].isSinking = true;
-                        WaterdRender(x + 1,y);
                     }
                 }
                 if ( y == map.size.y - 1 - raund){
-                    if(grid[x,y + 1].isSinking && rand.Next(100)<60){
+                    if(grid[x,y].isSinking && grid[x,y].IsOccupied && rand.Next(100)<60){
+                        grid[x,y - 1].isSinking = true;
+                        grid[x,y - 1].IsOccupied = true;
+                        Destroying(x,y - 1);
+                        WaterdRender(x,y - 1);
+                    }else if (!grid[x,y].isSinking){
                         grid[x,y].isSinking = true;
+                        grid[x,y].IsOccupied = true;
+                        Destroying(x,y);
                         WaterdRender(x,y);
-                    }else{
-                        grid[x,y + 1].IsOccupied = true;
-                        grid[x,y + 1].isSinking = true;
-                        WaterdRender(x,y + 1);
                     }
-                }
-                if (grid[x,y].isSinking){
-                    Debug.Log("Yep");
                 }
             }
         }
