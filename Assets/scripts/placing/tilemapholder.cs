@@ -56,11 +56,9 @@ public class TileMapHolder : MonoBehaviour
             }
         }
     }
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.Q)){
-            Sinking(raund);
-            raund++;
-        }
+    public void NextRound() {
+        Sinking(raund);
+        raund++;
     }
 
     private void Sinking(int raund){
