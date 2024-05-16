@@ -9,7 +9,7 @@ using Unity.Mathematics;
 public class TileMapHolder : MonoBehaviour
 {
     public Vector2Int Size;
-    public GameObject wave;
+    public GameObject[] waves;
     public GameObject water;
     public GameObject[] sand;
     public Placer placer;
@@ -43,7 +43,6 @@ public class TileMapHolder : MonoBehaviour
                 if(rand.Next(100)<60){
                     grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, false, false);
                     SandRender(x,y);
-                    WavesRender(x,y);
                 } else{
                     grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, true, true);
                     WaterdRender(x,y);
@@ -55,6 +54,7 @@ public class TileMapHolder : MonoBehaviour
                 }
             }
         }
+        WavesRender(0);
     }
     public void NextRound() {
         Sinking(raund);
@@ -126,7 +126,7 @@ public class TileMapHolder : MonoBehaviour
                 }
             }
         }
-        
+        WavesRender(raund);
     }
 
     private void Destroying(int x, int y){
@@ -163,18 +163,98 @@ public class TileMapHolder : MonoBehaviour
         }
     }
 
-    private void WavesRender(int x, int y){
-        if (x==0 && y!=0 && y != (map.size.y - 1)){
-            Instantiate(wave, new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,0));
+    private void WavesRender(int round){
+
+        for (int x = round; x< map.size.x - round; x++){
+            for (int y = round; y< map.size.y - round; y++){
+                if(( x == raund && y == raund) || (x==raund && y==(map.size.y - 1 - raund)) || (y==raund && x == (map.size.x - 1 - raund)) || (x == (map.size.x - 1 -raund) && y == (map.size.y - 1 -raund))){
+                    continue;
+                }
+        if (x==round && !grid[x,y].isSinking){
+            if(grid[x,y + 1].isSinking && !grid[x,y - 1].isSinking){
+                Instantiate(waves[0], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,0));
+                Instantiate(waves[1], new Vector3(grid[x + 1, y].centerX, grid[x + 1, y].centerY, 0), Quaternion.Euler(0,0,0));
+            }
+            else if (!grid[x,y + 1].isSinking && grid[x,y - 1].isSinking){
+                Instantiate(waves[0], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,90));
+                Instantiate(waves[1], new Vector3(grid[x + 1, y].centerX, grid[x + 1, y].centerY, 0), Quaternion.Euler(0,0,90));
+            }
+            else if (!grid[x,y + 1].isSinking && !grid[x,y - 1].isSinking){
+                Instantiate(waves[2], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,0));
+            }
+            else {
+                Instantiate(waves[3], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,90));
+                Instantiate(waves[4], new Vector3(grid[x + 1, y].centerX, grid[x + 1, y].centerY, 0), Quaternion.Euler(0,0,90));
+            }
         }
-        if (x!=0 && y==0 && x!=(map.size.x - 1)){
-            Instantiate(wave, new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,90));
+        if (y==round && !grid[x,y].isSinking){
+            if(grid[x + 1,y].isSinking && !grid[x - 1,y].isSinking){
+                Instantiate(waves[0], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,180));
+                Instantiate(waves[1], new Vector3(grid[x, y + 1].centerX, grid[x, y + 1].centerY, 0), Quaternion.Euler(0,0,180));
+            }
+            else if (!grid[x + 1,y].isSinking && grid[x - 1,y].isSinking){
+                Instantiate(waves[0], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,90));
+                Instantiate(waves[1], new Vector3(grid[x, y + 1].centerX, grid[x, y + 1].centerY, 0), Quaternion.Euler(0,0,90));
+            }
+            else if (!grid[x + 1,y].isSinking && !grid[x - 1,y].isSinking){
+                Instantiate(waves[2], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,90));
+            }
+            else {
+                Instantiate(waves[3], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,180));
+                Instantiate(waves[4], new Vector3(grid[x, y + 1].centerX, grid[x, y + 1].centerY, 0), Quaternion.Euler(0,0,180));
+            }
         }
-        if (x==(map.size.x - 1) && y != (map.size.y - 1) && y!= 0){
-            Instantiate(wave, new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,180));
+        if (x == map.size.x - 1 - round && !grid[x,y].isSinking){
+            if(grid[x,y + 1].isSinking && !grid[x,y - 1].isSinking){
+                Instantiate(waves[0], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,270));
+                Instantiate(waves[1], new Vector3(grid[x - 1, y].centerX, grid[x - 1, y].centerY, 0), Quaternion.Euler(0,0,270));
+            }
+            else if (!grid[x,y + 1].isSinking && grid[x,y - 1].isSinking){
+                Instantiate(waves[0], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,180));
+                Instantiate(waves[1], new Vector3(grid[x - 1, y].centerX, grid[x - 1, y].centerY, 0), Quaternion.Euler(0,0,180));
+            }
+            else if (!grid[x,y + 1].isSinking && !grid[x,y - 1].isSinking){
+                Instantiate(waves[2], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,180));
+            }
+            else {
+                Instantiate(waves[3], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,270));
+                Instantiate(waves[4], new Vector3(grid[x - 1, y].centerX, grid[x - 1, y].centerY, 0), Quaternion.Euler(0,0,270));
+            }
         }
-        if (x!=(map.size.x - 1) && y == (map.size.y - 1) && x!= 0){
-            Instantiate(wave, new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,270));
+        if(y == map.size.y - 1 - round && !grid[x,y].isSinking){
+            if(grid[x + 1,y].isSinking && !grid[x - 1,y].isSinking){
+                Instantiate(waves[0], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,270));
+                Instantiate(waves[1], new Vector3(grid[x, y - 1].centerX, grid[x, y - 1].centerY, 0), Quaternion.Euler(0,0,270));
+            }
+            else if (!grid[x + 1,y].isSinking && grid[x - 1,y].isSinking){
+                Instantiate(waves[0], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,0));
+                Instantiate(waves[1], new Vector3(grid[x, y - 1].centerX, grid[x, y - 1].centerY, 0), Quaternion.Euler(0,0,0));
+            }
+            else if (!grid[x + 1,y].isSinking && !grid[x - 1,y].isSinking){
+                Instantiate(waves[2], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,270));
+            }
+            else {
+                Instantiate(waves[3], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,0));
+                Instantiate(waves[4], new Vector3(grid[x, y - 1].centerX, grid[x, y - 1].centerY, 0), Quaternion.Euler(0,0,0));
+            }
+        }
+
+        if (grid[x,y].isSinking){
+            if (x==round){
+                Instantiate(waves[2], new Vector3(grid[x + 1, y].centerX, grid[x + 1, y].centerY, 0), Quaternion.Euler(0,0,0));
+            }
+            if (y == round){
+                Instantiate(waves[2], new Vector3(grid[x, y + 1].centerX, grid[x, y + 1].centerY, 0), Quaternion.Euler(0,0,90));
+            }
+            if (x == map.size.x - 1 - round){
+                Instantiate(waves[2], new Vector3(grid[x - 1, y].centerX, grid[x - 1, y].centerY, 0), Quaternion.Euler(0,0,180));
+            }
+            if (y== map.size.y - 1 - round){
+                Instantiate(waves[2], new Vector3(grid[x, y - 1].centerX, grid[x, y - 1].centerY, 0), Quaternion.Euler(0,0,270));
+            }
+        }
+
+            }
         }
     }
 
