@@ -132,7 +132,7 @@ public class TileMapHolder : MonoBehaviour
         for (int i=0;i<wavecnt;i++){
             Destroy(PlacedWaves[i]);
         }
-        WavesRender(raund);
+        SinWavesRender(raund);
     }
 
     private void Destroying(int x, int y){
@@ -257,6 +257,81 @@ public class TileMapHolder : MonoBehaviour
             }
             if (y== map.size.y - 1 - round){
                 PlacedWaves[wavecnt++] = Instantiate(waves[2], new Vector3(grid[x, y - 1].centerX, grid[x, y - 1].centerY, 0), Quaternion.Euler(0,0,270)) as GameObject;
+            }
+        }
+
+            }
+        }
+    }
+
+
+    private void SinWavesRender(int round){
+        wavecnt = 0;
+        for (int x = round; x< map.size.x - round; x++){
+            for (int y = round; y< map.size.y - round; y++){
+                if(( x == raund && y == raund) || (x==raund && y==(map.size.y - 1 - raund)) || (y==raund && x == (map.size.x - 1 - raund)) || (x == (map.size.x - 1 -raund) && y == (map.size.y - 1 -raund))){
+                    continue;
+                }
+        if (!grid[x,y].isSinking){
+            if(grid[x - 1,y].isSinking && !grid[x,y - 1].isSinking && grid[x,y + 1].isSinking){
+                PlacedWaves[wavecnt++] =  Instantiate(waves[0], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,0)) as GameObject;
+                PlacedWaves[wavecnt++] = Instantiate(waves[1], new Vector3(grid[x + 1, y].centerX, grid[x + 1, y].centerY, 0), Quaternion.Euler(0,0,0)) as GameObject;
+            }
+            else if (grid[x - 1,y].isSinking && !grid[x,y + 1].isSinking && grid[x,y - 1].isSinking){
+                PlacedWaves[wavecnt++] = Instantiate(waves[0], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,90)) as GameObject;
+                PlacedWaves[wavecnt++] = Instantiate(waves[1], new Vector3(grid[x + 1, y].centerX, grid[x + 1, y].centerY, 0), Quaternion.Euler(0,0,90)) as GameObject;
+            }
+            else if (grid[x - 1,y].isSinking && !grid[x,y + 1].isSinking && !grid[x,y - 1].isSinking){
+                PlacedWaves[wavecnt++] = Instantiate(waves[2], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,0)) as GameObject;
+            }
+            else if (grid[x - 1,y].isSinking){
+                PlacedWaves[wavecnt++] = Instantiate(waves[3], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,90)) as GameObject;
+                PlacedWaves[wavecnt++] = Instantiate(waves[4], new Vector3(grid[x + 1, y].centerX, grid[x + 1, y].centerY, 0), Quaternion.Euler(0,0,90)) as GameObject;
+            }
+            if( grid[x,y - 1].isSinking && grid[x + 1,y].isSinking && !grid[x - 1,y].isSinking){
+                PlacedWaves[wavecnt++] = Instantiate(waves[0], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,180)) as GameObject;
+                PlacedWaves[wavecnt++] = Instantiate(waves[1], new Vector3(grid[x, y + 1].centerX, grid[x, y + 1].centerY, 0), Quaternion.Euler(0,0,180)) as GameObject;
+            }
+            else if (grid[x,y - 1].isSinking && !grid[x + 1,y].isSinking && grid[x - 1,y].isSinking){
+                PlacedWaves[wavecnt++] = Instantiate(waves[0], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,90)) as GameObject;
+                PlacedWaves[wavecnt++] = Instantiate(waves[1], new Vector3(grid[x, y + 1].centerX, grid[x, y + 1].centerY, 0), Quaternion.Euler(0,0,90)) as GameObject;
+            }
+            else if (grid[x,y - 1].isSinking && !grid[x + 1,y].isSinking && !grid[x - 1,y].isSinking){
+                PlacedWaves[wavecnt++] = Instantiate(waves[2], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,90)) as GameObject;
+            }
+            else if (grid[x,y - 1].isSinking){
+                PlacedWaves[wavecnt++] = Instantiate(waves[3], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,180)) as GameObject;
+                PlacedWaves[wavecnt++] = Instantiate(waves[4], new Vector3(grid[x, y + 1].centerX, grid[x, y + 1].centerY, 0), Quaternion.Euler(0,0,180)) as GameObject;
+            }
+            if(grid[x + 1,y].isSinking && grid[x,y + 1].isSinking && !grid[x,y - 1].isSinking){
+                PlacedWaves[wavecnt++] = Instantiate(waves[0], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,270)) as GameObject;
+                PlacedWaves[wavecnt++] = Instantiate(waves[1], new Vector3(grid[x - 1, y].centerX, grid[x - 1, y].centerY, 0), Quaternion.Euler(0,0,270)) as GameObject;
+            }
+            else if (grid[x + 1,y].isSinking && !grid[x,y + 1].isSinking && grid[x,y - 1].isSinking){
+                PlacedWaves[wavecnt++] = Instantiate(waves[0], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,180)) as GameObject;
+                PlacedWaves[wavecnt++] = Instantiate(waves[1], new Vector3(grid[x - 1, y].centerX, grid[x - 1, y].centerY, 0), Quaternion.Euler(0,0,180)) as GameObject;
+            }
+            else if (grid[x + 1,y].isSinking && !grid[x,y + 1].isSinking && !grid[x,y - 1].isSinking){
+                PlacedWaves[wavecnt++] = Instantiate(waves[2], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,180)) as GameObject;
+            }
+            else if (grid[x + 1,y].isSinking){
+                PlacedWaves[wavecnt++] = Instantiate(waves[3], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,270)) as GameObject;
+                PlacedWaves[wavecnt++] = Instantiate(waves[4], new Vector3(grid[x - 1, y].centerX, grid[x - 1, y].centerY, 0), Quaternion.Euler(0,0,270)) as GameObject;
+            }
+            if(grid[x,y + 1].isSinking && grid[x + 1,y].isSinking && !grid[x - 1,y].isSinking){
+                PlacedWaves[wavecnt++] = Instantiate(waves[0], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,270)) as GameObject;
+                PlacedWaves[wavecnt++] = Instantiate(waves[1], new Vector3(grid[x, y - 1].centerX, grid[x, y - 1].centerY, 0), Quaternion.Euler(0,0,270)) as GameObject;
+            }
+            else if (grid[x,y + 1].isSinking && !grid[x + 1,y].isSinking && grid[x - 1,y].isSinking){
+                PlacedWaves[wavecnt++] = Instantiate(waves[0], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,0)) as GameObject;
+                PlacedWaves[wavecnt++] = Instantiate(waves[1], new Vector3(grid[x, y - 1].centerX, grid[x, y - 1].centerY, 0), Quaternion.Euler(0,0,0)) as GameObject;
+            }
+            else if (grid[x,y + 1].isSinking && !grid[x + 1,y].isSinking && !grid[x - 1,y].isSinking){
+                PlacedWaves[wavecnt++] = Instantiate(waves[2], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,270)) as GameObject;
+            }
+            else if (grid[x,y + 1].isSinking){
+                PlacedWaves[wavecnt++] = Instantiate(waves[3], new Vector3(grid[x, y].centerX, grid[x, y].centerY, 0), Quaternion.Euler(0,0,0)) as GameObject;
+                PlacedWaves[wavecnt++] = Instantiate(waves[4], new Vector3(grid[x, y - 1].centerX, grid[x, y - 1].centerY, 0), Quaternion.Euler(0,0,0)) as GameObject;
             }
         }
 
