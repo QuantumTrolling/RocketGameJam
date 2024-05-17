@@ -10,6 +10,7 @@ using System.Drawing;
 public class TileMapHolder : MonoBehaviour
 {
     public Vector2Int Size;
+    public int LevelNumber;
     public GameObject[] waves;
     public GameObject water;
     private GameObject[] PlacedWaves = new GameObject[100];
@@ -32,6 +33,7 @@ public class TileMapHolder : MonoBehaviour
 
         Vector3 tilePosition;
         Vector3Int coordinate = new Vector3Int(0, 0, 0);
+        if (LevelNumber == 1){
         for (int x = 0; x < map.size.x; x++)
         {
             for (int y = 0; y < map.size.y; y++)
@@ -58,6 +60,25 @@ public class TileMapHolder : MonoBehaviour
             }
         }
         WavesRender(0);
+        }
+        if (LevelNumber == 2){
+            for (int x = 0; x < map.size.x; x++)
+        {
+            for (int y = 0; y < map.size.y; y++)
+            {
+                coordinate.x = x; coordinate.y = y;
+                tilePosition = map.CellToWorld(coordinate);
+                if ((x==0 && y==0) || (x==0 && y==(map.size.y - 1 )) || (x== (map.size.x - 1 ) && y == (map.size.y - 1 )) || (x== (map.size.x - 1 ) && y==0)){
+                    grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, true, true);
+                    WaterdRender(x,y);
+                } else{
+                    grid[x, y] = new GridCell(tilePosition.x, tilePosition.y, false, false);
+                    SandRender(x,y);
+                }
+            }
+        }
+        WavesRender(0);
+        }
     }
     public void NextRound() {
         Sinking(raund);
@@ -129,6 +150,7 @@ public class TileMapHolder : MonoBehaviour
                 }
             }
         }
+        PlaceClean();
         for (int i=0;i<wavecnt;i++){
             Destroy(PlacedWaves[i]);
         }
@@ -143,10 +165,10 @@ public class TileMapHolder : MonoBehaviour
         }
     }
 
-    private bool WaterCheck(int x, int y){
+    private bool StructureCheck(int x, int y){
         Ray ray = new Ray(new Vector3(grid[x,y].centerX, grid[x,y].centerY, 10), new Vector3(0,0,-10));
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.tag == "Water"){
+        if (Physics.Raycast(ray, out hit) && hit.collider.gameObject.tag == "Structure"){
             return true;
         }
         return false;
@@ -260,6 +282,17 @@ public class TileMapHolder : MonoBehaviour
             }
         }
 
+            }
+        }
+    }
+
+
+    private void PlaceClean(){
+        for (int x = 0; x<map.size.x;x++){
+            for (int y = 0; y<map.size.y;y++){
+                if (!grid[x,y].isSinking && grid[x,y].IsOccupied && !StructureCheck(x,y)){
+                    grid[x,y].IsOccupied = false;
+                }
             }
         }
     }
