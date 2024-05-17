@@ -23,7 +23,7 @@ public class resources : MonoBehaviour
         resource_fishs = 0;
         resource_planks = 0;
         resource_pearls = 0;
-        resource_time = 100;
+        resource_time = 0;
         text_planks.text = "" + resource_planks;
         text_fishs.text = "" + resource_fishs;
         text_pearls.text = "" + resource_fishs;
