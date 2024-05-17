@@ -16,14 +16,26 @@ public class CrabWalk : MonoBehaviour
     private bool Spawn;
     private bool[] isMovingBack = new bool[100];
     public Vector3[] positions;
+    public int CrabCount;
+    private Animator animator;
 
+    void Start(){
+        animator = crab.GetComponent<Animator>();
+        StartCoroutine(WaitSpawner());
+    }
+
+    private IEnumerator WaitSpawner(){
+        if (CrabCount>0){
+            yield return new WaitForSeconds(4);
+            cnt++;
+            CrabSpawn();
+            CrabCount--;
+            StartCoroutine(WaitSpawner());
+        }
+    }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q)){
-            cnt++;
-            CrabSpawn();
-        }
         for(int i=1;i<cnt + 1;i++){
             if (isMoving[i]){
                 MoveCrab(i);
@@ -35,12 +47,18 @@ public class CrabWalk : MonoBehaviour
         if(Input.GetMouseButtonDown(1)){
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray,out RaycastHit hit) && hit.collider.gameObject.tag == "Crab"){
-                Destroy(hit.collider.gameObject);
+                StartCoroutine(CrabDeath(hit.collider.gameObject));
                 isMoving[cnt] = false;
                 isMovingBack[cnt] = false;
             }
         }
         
+    }
+
+    private IEnumerator CrabDeath(GameObject crab){
+        animator.Play("CrabDeath");
+        yield return new WaitForSeconds(1);
+        Destroy(crab);
     }
     
 
