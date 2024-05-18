@@ -11,6 +11,7 @@ public class CrabWalk : MonoBehaviour
     public GameObject crab;
     public GameObject win;
     public GameObject lose;
+    public TileMapHolder tileMap;
     public Pause pause;
     private GameObject[] newcrab = new GameObject[100];
     private int cnt = 0;
@@ -24,12 +25,14 @@ public class CrabWalk : MonoBehaviour
     public int CrabCount;
     private int diff = 1;
     private float speed;
+    private int sink = 3;
     private Animator animator;
 
     void Start(){
         animator = crab.GetComponent<Animator>();
         StartCoroutine(WaitSpawner());
         StartCoroutine(IncreaseDiff());
+        StartCoroutine(Sinking());
         resources.resource_pearls = CrabCount;
         Instantiate(Things, positions[5], Quaternion.Euler(0,0,0));
 
@@ -38,6 +41,24 @@ public class CrabWalk : MonoBehaviour
     private IEnumerator IncreaseDiff(){
         yield return new WaitForSeconds(25);
         diff++;
+    }
+
+    private IEnumerator Sinking(){
+        if(sink>0){
+        yield return new WaitForSeconds(15);
+        Debug.Log("Sink");
+        tileMap.NextRound();
+        positions[0].x++;
+        positions[0].y++;
+        positions[1].x--;
+        positions[1].y++;
+        positions[2].x--;
+        positions[2].y--;
+        positions[3].x++;
+        positions[3].y--;
+        sink--;
+        StartCoroutine(Sinking());
+        }
     }
 
     private IEnumerator WaitSpawner(){
