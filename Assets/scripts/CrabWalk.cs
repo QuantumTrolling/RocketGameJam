@@ -12,7 +12,7 @@ public class CrabWalk : MonoBehaviour
     private GameObject[] newcrab = new GameObject[100];
     private int cnt = 0;
     private bool[] isMoving = new bool[100];
-    private Vector3 SpawnPoint;
+    private Vector3[] SpawnPoint = new Vector3[100];
     private bool Spawn;
     private bool[] isMovingBack = new bool[100];
     public Vector3[] positions;
@@ -66,16 +66,16 @@ public class CrabWalk : MonoBehaviour
         var random = new System.Random();
         switch(random.Next(1,4)){
         case 1:
-        SpawnPoint = positions[0];
+        SpawnPoint[cnt] = positions[0];
         break;
         case 2:
-        SpawnPoint = positions[2];
+        SpawnPoint[cnt] = positions[2];
         break;
         case 3:
-        SpawnPoint = positions[3];
+        SpawnPoint[cnt] = positions[3];
         break;
         }
-        newcrab[cnt] = Instantiate(crab, SpawnPoint, Quaternion.Euler(0,0,0)) as GameObject;
+        newcrab[cnt] = Instantiate(crab, SpawnPoint[cnt], Quaternion.Euler(0,0,0)) as GameObject;
         isMoving[cnt] = true;
     }
 
@@ -89,8 +89,8 @@ public class CrabWalk : MonoBehaviour
     }
 
     private void MoveBackCrab( int i){
-        newcrab[i].transform.position = Vector3.MoveTowards(newcrab[cnt].transform.position, SpawnPoint, 4f*Time.deltaTime);
-        if(newcrab[i].transform.position == SpawnPoint){
+        newcrab[i].transform.position = Vector3.MoveTowards(newcrab[cnt].transform.position, SpawnPoint[cnt], 4f*Time.deltaTime);
+        if(newcrab[i].transform.position == SpawnPoint[cnt]){
             isMovingBack[i] = false;
             Destroy(newcrab[i]);
         }
