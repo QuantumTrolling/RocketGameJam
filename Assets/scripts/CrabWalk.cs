@@ -183,10 +183,10 @@ public class CrabWalk : MonoBehaviour
 
     private void MoveBackCrab( int i){
         newcrab[i].transform.position = Vector3.MoveTowards(newcrab[i].transform.position, SpawnPoint[i], speed*Time.deltaTime);
+        animator[i].Play("CrabThiefWalk");
         if(newcrab[i].transform.position == SpawnPoint[i]){
             isMovingBack[i] = false;
             resources.resource_fishs++;
-            animator[i].Play("CrabThiefWalk");
             Destroy(newcrab[i]);
         }
     }
