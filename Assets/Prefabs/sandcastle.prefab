@@ -119,7 +119,7 @@ MonoBehaviour:
   fish_cost: 0
   plank_cost: 0
   shell_cost: 0
-  action_cost: 1
+  action_cost: 3
 --- !u!65 &3224487546957406386
 BoxCollider:
   m_ObjectHideFlags: 0
