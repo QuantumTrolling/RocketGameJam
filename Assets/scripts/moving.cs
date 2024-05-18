@@ -6,6 +6,7 @@ public class moving : MonoBehaviour
 {
     private bool ismoving = false;
     private bool CanMove = true;
+    public Pause pause;
     private Vector3 targetPosition;
     public float speed = 5f;
 
@@ -24,7 +25,7 @@ public class moving : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetMouseButton(0)){
+        if(Input.GetMouseButton(0) && !pause.PauseGame){
             SetTargetPosition();
         }
         if(ismoving)
