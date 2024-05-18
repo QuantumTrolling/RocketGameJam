@@ -44,7 +44,7 @@ public class CrabWalk : MonoBehaviour
                 MoveBackCrab(i);
             }
         }
-        if(Input.GetMouseButtonDown(1)){
+        if(Input.GetMouseButtonDown(0)){
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray,out RaycastHit hit) && hit.collider.gameObject.tag == "Crab"){
                 StartCoroutine(CrabDeath(hit.collider.gameObject));
@@ -84,6 +84,7 @@ public class CrabWalk : MonoBehaviour
         if(newcrab[i].transform.position == positions[1]){
             isMoving[i] = false;
             isMovingBack[i]=true;
+            animator.Play("CrabThief");
         }
     }
 
