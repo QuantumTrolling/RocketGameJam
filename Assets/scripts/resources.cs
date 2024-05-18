@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System;
 
 public class resources : MonoBehaviour
@@ -12,6 +13,7 @@ public class resources : MonoBehaviour
     public static int resource_pearls;
     public static int resource_time;
     public static int Raund = 1;
+    public CrabWalk crab;
     public Text text_planks;
     public Text text_fishs;
     public Text text_pearls;
@@ -33,6 +35,7 @@ public class resources : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         text_planks.text = "" + resource_planks;
         text_fishs.text = "" + resource_fishs;
         text_pearls.text = "" + resource_pearls;
@@ -60,4 +63,5 @@ public class resources : MonoBehaviour
         }
         }
     }
+
 }

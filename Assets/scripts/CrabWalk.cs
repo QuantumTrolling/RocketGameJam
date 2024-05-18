@@ -5,10 +5,12 @@ using System;
 using UnityEngine.UIElements;
 using NUnit.Framework.Constraints;
 using Unity.VisualScripting;
-
+using UnityEngine.SceneManagement;
 public class CrabWalk : MonoBehaviour
 {
     public GameObject crab;
+    public GameObject win;
+    public GameObject lose;
     public Pause pause;
     private GameObject[] newcrab = new GameObject[100];
     private int cnt = 0;
@@ -34,13 +36,13 @@ public class CrabWalk : MonoBehaviour
     }
 
     private IEnumerator IncreaseDiff(){
-        yield return new WaitForSeconds(30);
+        yield return new WaitForSeconds(25);
         diff++;
     }
 
     private IEnumerator WaitSpawner(){
         if (CrabCount>0 && diff == 1){
-            speed = 3.5f;
+            speed = 4f;
             yield return new WaitForSeconds(4);
             cnt++;
             CrabSpawn(0);
@@ -55,7 +57,7 @@ public class CrabWalk : MonoBehaviour
             CrabCount--;
             StartCoroutine(WaitSpawner());
         } else if (CrabCount>0 && diff == 2){
-            speed = 2.5f;
+            speed = 5f;
             yield return new WaitForSeconds(4);
             cnt++;
             CrabSpawn(0);
@@ -98,7 +100,27 @@ public class CrabWalk : MonoBehaviour
                 }
             }
         }
+        if(CrabCount == 0){
+            if (resources.resource_planks >= resources.resource_pearls/2){
+                StartCoroutine(NextLevel());
+            }
+            else{
+                StartCoroutine(RePlay());
+            }
+        }
         
+    }
+
+    private IEnumerator NextLevel(){
+        win.SetActive(true);
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("Scene2");
+    }
+
+    private IEnumerator RePlay(){
+        lose.SetActive(true);
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("Scene1");
     }
 
     private IEnumerator CrabDeath(GameObject crab){
