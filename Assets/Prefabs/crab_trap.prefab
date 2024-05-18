@@ -115,10 +115,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165d40e4199486349894532af0af33d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fish_cost: 0
+  fish_cost: 1
   plank_cost: 0
   shell_cost: 0
-  action_cost: 1
+  action_cost: 2
 --- !u!65 &7622701114876292676
 BoxCollider:
   m_ObjectHideFlags: 0
