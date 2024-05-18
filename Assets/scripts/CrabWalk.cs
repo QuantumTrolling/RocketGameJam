@@ -26,10 +26,9 @@ public class CrabWalk : MonoBehaviour
     private int diff = 1;
     private float speed;
     private int sink = 3;
-    private Animator animator;
+    private Animator[] animator = new Animator[100];
 
     void Start(){
-        animator = crab.GetComponent<Animator>();
         StartCoroutine(WaitSpawner());
         StartCoroutine(IncreaseDiff());
         StartCoroutine(Sinking());
@@ -146,7 +145,7 @@ public class CrabWalk : MonoBehaviour
 
     private IEnumerator CrabDeath(GameObject crab){
         resources.resource_planks++;
-        animator.Play("CrabDeath");
+        crab.GetComponent<Animator>().Play("CrabDeath");
         yield return new WaitForSeconds(1);
         Destroy(crab);
     }
@@ -169,6 +168,7 @@ public class CrabWalk : MonoBehaviour
         break;
         }
         newcrab[cnt] = Instantiate(crab, SpawnPoint[cnt], Quaternion.Euler(0,0,0)) as GameObject;
+        animator[cnt]=newcrab[cnt].GetComponent<Animator>();
         isMoving[cnt] = true;
     }
 
@@ -177,7 +177,7 @@ public class CrabWalk : MonoBehaviour
         if(newcrab[i].transform.position == positions[5]){
             isMoving[i] = false;
             isMovingBack[i]=true;
-            animator.Play("CrabThief");
+            animator[i].Play("crabWalk");
         }
     }
 
@@ -186,6 +186,7 @@ public class CrabWalk : MonoBehaviour
         if(newcrab[i].transform.position == SpawnPoint[i]){
             isMovingBack[i] = false;
             resources.resource_fishs++;
+            animator[i].Play("CrabThiefWalk");
             Destroy(newcrab[i]);
         }
     }

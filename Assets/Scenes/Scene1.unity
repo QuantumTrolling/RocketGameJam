@@ -2667,6 +2667,7 @@ MonoBehaviour:
   crab: {fileID: 4578444784896714370, guid: 0c6a1e11d3360344d8c2384f25886442, type: 3}
   win: {fileID: 694633390}
   lose: {fileID: 1372212079}
+  tileMap: {fileID: 1387427020}
   pause: {fileID: 253592137}
   Things: {fileID: 322181843184137276, guid: 817f3150a63fb6b4db7cf82d829bc848, type: 3}
   positions:
