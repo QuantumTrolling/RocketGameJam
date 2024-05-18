@@ -9,16 +9,19 @@ using Unity.VisualScripting;
 public class CrabWalk : MonoBehaviour
 {
     public GameObject crab;
+    public Pause pause;
     private GameObject[] newcrab = new GameObject[100];
     private int cnt = 0;
     private bool[] isMoving = new bool[100];
     private Vector3[] SpawnPoint = new Vector3[100];
+    public GameObject Things;
     private bool Spawn;
     private bool[] isMovingBack = new bool[100];
     private Vector3[] TargetPoint = new Vector3[100];
     public Vector3[] positions;
     public int CrabCount;
     private int diff = 1;
+    private float speed;
     private Animator animator;
 
     void Start(){
@@ -26,6 +29,8 @@ public class CrabWalk : MonoBehaviour
         StartCoroutine(WaitSpawner());
         StartCoroutine(IncreaseDiff());
         resources.resource_pearls = CrabCount;
+        Instantiate(Things, positions[5], Quaternion.Euler(0,0,0));
+
     }
 
     private IEnumerator IncreaseDiff(){
@@ -35,6 +40,7 @@ public class CrabWalk : MonoBehaviour
 
     private IEnumerator WaitSpawner(){
         if (CrabCount>0 && diff == 1){
+            speed = 3.5f;
             yield return new WaitForSeconds(4);
             cnt++;
             CrabSpawn(0);
@@ -43,8 +49,13 @@ public class CrabWalk : MonoBehaviour
             cnt++;
             CrabSpawn(1);
             CrabCount--;
+            yield return new WaitForSeconds(1.5f);
+            cnt++;
+            CrabSpawn(0);
+            CrabCount--;
             StartCoroutine(WaitSpawner());
         } else if (CrabCount>0 && diff == 2){
+            speed = 2.5f;
             yield return new WaitForSeconds(4);
             cnt++;
             CrabSpawn(0);
@@ -75,11 +86,10 @@ public class CrabWalk : MonoBehaviour
                 MoveBackCrab(i);
             }
         }
-        if(Input.GetMouseButtonDown(0)){
+        if(Input.GetMouseButtonDown(0) && !pause.PauseGame){
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray,out RaycastHit hit) && hit.collider.gameObject.tag == "Crab"){
                 StartCoroutine(CrabDeath(hit.collider.gameObject));
-                resources.resource_planks++;
                 for (int i=0;i<=cnt;i++){
                     if (newcrab[i]==hit.collider.gameObject){
                         isMoving[i] = false;
@@ -92,6 +102,7 @@ public class CrabWalk : MonoBehaviour
     }
 
     private IEnumerator CrabDeath(GameObject crab){
+        resources.resource_planks++;
         animator.Play("CrabDeath");
         yield return new WaitForSeconds(1);
         Destroy(crab);
@@ -114,27 +125,13 @@ public class CrabWalk : MonoBehaviour
         SpawnPoint[cnt] = positions[3];
         break;
         }
-        switch(random.Next(1,4 - i) + i){
-        case 1:
-        TargetPoint[cnt] = positions[4];
-        break;
-        case 2:
-        TargetPoint[cnt] = positions[5];
-        break;
-        case 3:
-        TargetPoint[cnt] = positions[6];
-        break;
-        case 4:
-        TargetPoint[cnt] = positions[7];
-        break;
-        }
         newcrab[cnt] = Instantiate(crab, SpawnPoint[cnt], Quaternion.Euler(0,0,0)) as GameObject;
         isMoving[cnt] = true;
     }
 
     private void MoveCrab( int i){
-        newcrab[i].transform.position = Vector3.MoveTowards(newcrab[i].transform.position, TargetPoint[i], 4f*Time.deltaTime);
-        if(newcrab[i].transform.position == TargetPoint[i]){
+        newcrab[i].transform.position = Vector3.MoveTowards(newcrab[i].transform.position, positions[5], speed*Time.deltaTime);
+        if(newcrab[i].transform.position == positions[5]){
             isMoving[i] = false;
             isMovingBack[i]=true;
             animator.Play("CrabThief");
@@ -142,7 +139,7 @@ public class CrabWalk : MonoBehaviour
     }
 
     private void MoveBackCrab( int i){
-        newcrab[i].transform.position = Vector3.MoveTowards(newcrab[i].transform.position, SpawnPoint[i], 4f*Time.deltaTime);
+        newcrab[i].transform.position = Vector3.MoveTowards(newcrab[i].transform.position, SpawnPoint[i], speed*Time.deltaTime);
         if(newcrab[i].transform.position == SpawnPoint[i]){
             isMovingBack[i] = false;
             resources.resource_fishs++;
