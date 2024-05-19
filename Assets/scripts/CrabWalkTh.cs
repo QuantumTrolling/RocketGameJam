@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class CrabWalkTh : MonoBehaviour
 {
     public GameObject crab;
+    public CrabCollider crabCollider;
     public TileMapHolder tileMap;
     public Pause pause;
     private GameObject[] newcrab = new GameObject[100];
@@ -80,6 +81,11 @@ public class CrabWalkTh : MonoBehaviour
             }
             else if (isMovingBack[i]){
                 MoveBackCrabth(i);
+            }
+            if(!newcrab[i].IsDestroyed() && newcrab[i].GetComponent<CrabCollider>().isMovingBack){
+                newcrab[i].GetComponent<CrabCollider>().isMovingBack = false;
+                isMoving[i] = false;
+                isMovingBack[i] = true;
             }
         }
         

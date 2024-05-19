@@ -5,7 +5,7 @@ using UnityEngine;
 public class CrabCollider : MonoBehaviour
 {
     public bool isMoving;
-    public bool isMovingBack;
+    public bool isMovingBack = false;
 
     private void OnTriggerEnter(Collider other){
         if(other.CompareTag("Structure") ){
