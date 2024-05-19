@@ -27,6 +27,8 @@ public class CrabWalk : MonoBehaviour
     private float speed;
     private int sink = 3;
     private Animator[] animator = new Animator[100];
+    public AudioClip DeathSound;
+    public AudioSource audioSource;
 
     void Start(){
         StartCoroutine(WaitSpawner());
@@ -145,6 +147,7 @@ public class CrabWalk : MonoBehaviour
 
     private IEnumerator CrabDeath(GameObject crab){
         resources.resource_planks++;
+        audioSource.PlayOneShot(DeathSound);
         crab.GetComponent<Animator>().Play("CrabDeath");
         yield return new WaitForSeconds(1);
         Destroy(crab);
@@ -177,7 +180,6 @@ public class CrabWalk : MonoBehaviour
         if(newcrab[i].transform.position == positions[5]){
             isMoving[i] = false;
             isMovingBack[i]=true;
-            animator[i].Play("crabWalk");
         }
     }
 

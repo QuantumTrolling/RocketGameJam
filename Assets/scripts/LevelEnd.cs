@@ -13,6 +13,23 @@ public class LevelEnd : MonoBehaviour
 
     public GameObject lose;
 
+    void Start(){
+        if (Level == 2){
+            StartCoroutine(Checker());
+        }
+    }
+
+   public IEnumerator Checker(){
+        yield return new WaitForSeconds(40);
+        if (resources.resource_stars >=100){
+            StartCoroutine(Nextlevel());
+        }else{
+            StartCoroutine(Replay());
+        }
+        
+    }
+
+
     public IEnumerator Nextlevel(){
         win.SetActive(true);
         yield return new WaitForSeconds(5);
