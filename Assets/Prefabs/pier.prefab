@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3988a94fcb2d5fd4194a707f11b5db16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  add_fish: 4
-  add_plank: 0
+  add_fish: 0
+  add_plank: 4
   add_shell: 0
   add_action: 0

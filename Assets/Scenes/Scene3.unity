@@ -3224,7 +3224,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 7, z: -10}
+  m_LocalPosition: {x: 7.5, y: 7, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3244,6 +3244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crab: {fileID: 4578444784896714370, guid: 355f36d82d27bb8478f45fae5cab5130, type: 3}
+  crabCollider: {fileID: 0}
   tileMap: {fileID: 1387427020}
   pause: {fileID: 253592137}
   Things: {fileID: 5634610850662916370, guid: a0628c9868c2c7444b3ea7ebcfe3b2bd, type: 3}

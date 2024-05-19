@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   add_fish: 0
-  add_plank: 0
+  add_plank: 1
   add_shell: 0
   add_action: 0
 --- !u!114 &6136670285903632333

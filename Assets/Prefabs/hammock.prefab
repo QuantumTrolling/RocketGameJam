@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8355554453963778711}
   - component: {fileID: -5074362503658272774}
   - component: {fileID: 5919552828702364038}
+  - component: {fileID: -9029553276018367895}
   m_Layer: 0
   m_Name: hammock
   m_TagString: Structure
@@ -160,3 +161,19 @@ MonoBehaviour:
   plank_cost: 0
   shell_cost: 0
   action_cost: 0
+--- !u!114 &-9029553276018367895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708581502305006455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3988a94fcb2d5fd4194a707f11b5db16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  add_fish: 0
+  add_plank: 3
+  add_shell: 0
+  add_action: 0

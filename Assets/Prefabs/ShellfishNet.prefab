@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 458265419608277355}
   - component: {fileID: -5586327965199086491}
   - component: {fileID: -2269491286642387677}
+  - component: {fileID: -9072917418815474021}
   m_Layer: 0
   m_Name: ShellfishNet
   m_TagString: Structure
@@ -292,3 +293,19 @@ MonoBehaviour:
   plank_cost: 0
   shell_cost: 0
   action_cost: 0
+--- !u!114 &-9072917418815474021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999122556291319017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3988a94fcb2d5fd4194a707f11b5db16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  add_fish: 0
+  add_plank: 8
+  add_shell: 0
+  add_action: 0
