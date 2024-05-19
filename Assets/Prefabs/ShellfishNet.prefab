@@ -293,6 +293,7 @@ MonoBehaviour:
   plank_cost: 0
   shell_cost: 0
   action_cost: 0
+  Level: 0
 --- !u!114 &-9072917418815474021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +307,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   add_fish: 0
-  add_plank: 8
+  add_plank: 0
   add_shell: 0
   add_action: 0
+  add_stars: 8
+  Level: 0

@@ -161,6 +161,7 @@ MonoBehaviour:
   plank_cost: 0
   shell_cost: 0
   action_cost: 0
+  Level: 0
 --- !u!114 &-9029553276018367895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,3 +178,5 @@ MonoBehaviour:
   add_plank: 3
   add_shell: 0
   add_action: 0
+  add_stars: 3
+  Level: 0

@@ -121,6 +121,7 @@ MonoBehaviour:
   plank_cost: 0
   shell_cost: 0
   action_cost: 0
+  Level: 0
 --- !u!65 &-3732613911455445808
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -218,6 +219,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   add_fish: 0
-  add_plank: 4
+  add_plank: 0
   add_shell: 0
   add_action: 0
+  add_stars: 5
+  Level: 0

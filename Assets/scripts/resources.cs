@@ -12,8 +12,9 @@ public class resources : MonoBehaviour
     public static int resource_planks;
     public static int resource_pearls;
     public static int resource_time;
+    public static int resource_stars;
     public static int Raund = 1;
-    public CrabWalk crab;
+    public Text text_stars;
     public Text text_planks;
     public Text text_fishs;
     public Text text_pearls;
@@ -26,6 +27,8 @@ public class resources : MonoBehaviour
         resource_planks = 0;
         resource_pearls = 0;
         resource_time = 0;
+        resource_stars = 0;
+        text_stars.text = "" + resource_stars;
         text_planks.text = "" + resource_planks;
         text_fishs.text = "" + resource_fishs;
         text_pearls.text = "" + resource_fishs;
@@ -35,7 +38,7 @@ public class resources : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        text_stars.text = "" + resource_stars;
         text_planks.text = "" + resource_planks;
         text_fishs.text = "" + resource_fishs;
         text_pearls.text = "" + resource_pearls;
