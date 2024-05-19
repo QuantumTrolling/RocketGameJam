@@ -291,4 +291,4 @@ MonoBehaviour:
   fish_cost: 0
   plank_cost: 0
   shell_cost: 0
-  action_cost: 5
+  action_cost: 0

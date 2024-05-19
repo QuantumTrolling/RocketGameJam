@@ -118,9 +118,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fish_cost: 0
-  plank_cost: 2
+  plank_cost: 0
   shell_cost: 0
-  action_cost: 4
+  action_cost: 0
 --- !u!65 &-3732613911455445808
 BoxCollider:
   m_ObjectHideFlags: 0
